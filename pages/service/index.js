@@ -25,7 +25,7 @@ Page({
         key: 'check'
       },
       {
-        name: '知名校友',
+        name: '重点校友',
         icon: 'famous.png',
         path: '/alumni/pages/famous/famous',
         key: 'famous'
