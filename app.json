@@ -57,6 +57,12 @@
       }
     ]
   },
+  "plugins": {
+    "citySelector": {
+      "version": "1.0.2",
+      "provider": "wx63ffb7b7894e99ae"
+    }
+  },
   "window": {
     "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTitleText": "武理校友汇",
