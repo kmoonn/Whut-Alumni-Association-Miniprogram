@@ -65,7 +65,7 @@ Page({
             duration: 1500,
             success: () => {
               setTimeout(() => {
-                wx.navigateTo({ url: '/pages/service/index' });
+                wx.switchTab({ url: '/pages/index/index' });
               }, 1500);
             }
           });
@@ -139,7 +139,7 @@ Page({
       this.setData({ showPasswordModal: false });
 
       setTimeout(() => {
-        wx.navigateTo({ url: '/pages/service/index' });
+        wx.switchTab({ url: '/pages/index/index' });
       }, 1000);
     }).catch(() => {
       wx.showToast({ title: '修改失败，请重试', icon: 'none' });

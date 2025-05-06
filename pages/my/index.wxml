@@ -1,0 +1,97 @@
+<!-- 顶部校友会导航栏 -->
+<view class="top-bar">
+  <image src="https://636c-cloud1-6gsqyvkd3f24bdd8-1311119192.tcb.qcloud.la/images/logo.png" class="logo"></image>
+  <text class="top-title">我的</text>
+</view>
+  <!-- 用户信息卡片 -->
+  <view class="user-card">
+    <view class="user-info">
+      <image class="avatar" src="{{userInfo.avatarUrl || 'https://636c-cloud1-6gsqyvkd3f24bdd8-1311119192.tcb.qcloud.la/images/default-avatar.jpg'}}" mode="aspectFill"></image>
+      <view class="info">
+        <text class="nickname">{{userInfo.nickname || '未登录'}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 功能菜单 -->
+  <view class="menu-list">
+    <view class="menu-group">
+      <!-- <view class="menu-item" bindtap="navigateTo" data-url="/pages/my/profile">
+        <image class="icon" src="https://636c-cloud1-6gsqyvkd3f24bdd8-1311119192.tcb.qcloud.la/images/icon-profile.png" mode="aspectFit"></image>
+        <text class="title">个人资料</text>
+        <text class="arrow"></text>
+      </view> -->
+      <!-- <view class="menu-item" bindtap="navigateTo" data-url="/pages/my/message">
+        <image class="icon" src="https://636c-cloud1-6gsqyvkd3f24bdd8-1311119192.tcb.qcloud.la/images/icon-message.png" mode="aspectFit"></image>
+        <text class="title">消息通知</text>
+        <text class="badge" wx:if="{{unreadCount > 0}}">{{unreadCount}}</text>
+        <text class="arrow"></text>
+      </view>
+    </view> -->
+
+    <!-- <view class="menu-group">
+      <view class="menu-item" bindtap="navigateTo" data-url="/pages/my/activity">
+        <image class="icon" src="https://636c-cloud1-6gsqyvkd3f24bdd8-1311119192.tcb.qcloud.la/images/icon-activity.png" mode="aspectFit"></image>
+        <text class="title">我的活动</text>
+        <text class="arrow"></text>
+      </view>-->
+    </view> 
+
+    <view class="menu-group">
+      <!-- <view class="menu-item" bindtap="navigateTo" data-url="/pages/my/settings">
+        <image class="icon" src="https://636c-cloud1-6gsqyvkd3f24bdd8-1311119192.tcb.qcloud.la/images/icon-settings.png" mode="aspectFit"></image>
+        <text class="title">设置</text>
+        <text class="arrow"></text>
+      </view> -->
+      <view class="menu-item" bindtap="contactService">
+  <image class="icon" src="https://636c-cloud1-6gsqyvkd3f24bdd8-1311119192.tcb.qcloud.la/images/icon-service.png" mode="aspectFit"></image>
+  <text class="title">联系我们</text>
+  <text class="arrow"></text>
+</view>
+
+<!-- 添加自定义弹窗 -->
+<view class="custom-modal" wx:if="{{showContactModal}}">
+  <view class="modal-mask" bindtap="hideModal"></view>
+  <view class="modal-content">
+    <view class="modal-title">联系我们</view>
+    <view class="modal-body">
+      <view class="contact-item">
+        <text class="label">地    址：</text>
+        <text class="value">马房山校区西院第二行政楼</text>
+      </view>
+      <view class="contact-item">
+        <text class="label">邮    编：</text>
+        <text class="value">430070</text>
+      </view>
+      <view class="contact-item">
+        <text class="label">联系电话：</text>
+        <text class="value">027-87651507</text>
+      </view>
+      <view class="contact-item">
+        <text class="label">邮    箱：</text>
+        <text class="value">whutxyh@whut.edu.cn</text>
+      </view>
+    </view>
+    <view class="modal-footer">
+      <button class="confirm-btn" bindtap="hideModal">我知道了</button>
+    </view>
+  </view>
+</view>
+      <view class="menu-item" bindtap="navigateTo" data-url="/pages/my/about">
+        <image class="icon" src="https://636c-cloud1-6gsqyvkd3f24bdd8-1311119192.tcb.qcloud.la/images/icon-about.png" mode="aspectFit"></image>
+        <text class="title">关于我们</text>
+        <text class="arrow"></text>
+      </view>
+      <view class="menu-item" bindtap="logout">
+        <image class="icon" src="https://636c-cloud1-6gsqyvkd3f24bdd8-1311119192.tcb.qcloud.la/images/%E9%80%80%E5%87%BA%E7%99%BB%E5%BD%95.png?sign=be902f50d743524063f67d0401c23ca4&t=1742105813" mode="aspectFit"></image>
+        <text class="title">退出登录</text>
+        <text class="arrow"></text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 版权声明 -->
+<view class="footer">
+  <text class="copyright">© 2025 武汉理工大学校友会</text>
+  <text class="support">技术支持：学海楼815实验室</text>
+</view>

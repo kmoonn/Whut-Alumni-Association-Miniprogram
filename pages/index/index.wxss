@@ -1,0 +1,245 @@
+.top-bar {
+  display: flex;
+  padding: 15px 15px;
+  background: linear-gradient(to right, #0056b3, #007bff);
+  color: white;
+  font-size: 40rpx;
+  font-weight: bold;
+}
+
+.logo {
+  width: 250px;
+  height: 50px;
+  margin-right: 40px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.swiper {
+  width: 100%;
+  height: 200px; /* 视具体需求调整 */
+}
+
+.slide-image {
+  width: 100%;
+  height: 100%;
+}
+
+/* 通用section样式 */
+.section {
+  background: #ffffff;
+  margin-bottom: 20rpx;
+  padding: 30rpx;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  color: #333;
+  font-weight: 500;
+  position: relative;
+  padding-left: 20rpx;
+}
+
+.section-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6rpx;
+  height: 32rpx;
+  background: #1aad19;
+  border-radius: 3rpx;
+}
+
+.more {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 校友动态 */
+.news-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10rpx;
+}
+
+.news-item {
+  display: flex;
+  gap: 20rpx;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.news-item:last-child {
+  border-bottom: none;
+}
+
+.news-image {
+  width: 200rpx;
+  height: 120rpx;
+  border-radius: 8rpx;
+  object-fit: cover;
+}
+
+.news-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.news-title {
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.4;
+}
+
+.news-date {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 活动信息 */
+.activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.activity-item {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.activity-item:last-child {
+  border-bottom: none;
+}
+
+.activity-time {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 100rpx;
+}
+
+.activity-time .day {
+  font-size: 36rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+.activity-time .month {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.activity-info {
+  flex: 1;
+}
+
+.text-wrapper {
+  flex: 1; /* 文字区域占据剩余空间 */
+  max-width: calc(100% - 170rpx); /* 为图片预留空间（图片宽度+间距） */
+}
+
+.activity-title {
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.5;
+  text-overflow: ellipsis;
+  display: -webkit-box;  
+  -webkit-line-clamp: 2;
+}
+
+/* 
+
+
+.story-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.story-item {
+  position: relative;
+  height: 300rpx;
+  border-radius: 12rpx;
+  overflow: hidden;
+}
+
+.story-image {
+  width: 100%;
+  height: 100%;
+}
+
+.story-info {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 20rpx;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+}
+
+.story-title {
+  font-size: 28rpx;
+  color: #ffffff;
+  margin-bottom: 8rpx;
+}
+
+.story-desc {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+
+.company-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20rpx;
+}
+
+.company-item {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  padding: 20rpx;
+  background: #f5f5f5;
+  border-radius: 8rpx;
+}
+
+.company-logo {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 8rpx;
+}
+
+.company-info {
+  flex: 1;
+}
+
+.company-name {
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.company-industry {
+  font-size: 24rpx;
+  color: #999;
+}  */

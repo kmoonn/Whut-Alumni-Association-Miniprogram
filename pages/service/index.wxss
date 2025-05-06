@@ -1,6 +1,6 @@
 .top-bar {
   display: flex;
-  padding: 15px 25px;
+  padding: 15px 15px;
   background: linear-gradient(to right, #0056b3, #007bff);
   color: white;
   font-size: 40rpx;
@@ -13,8 +13,8 @@
   margin-right: 40px;
 }
 
-.title {
-  font-size: 20px;
+.top-title {
+  font-size: 18px;
   font-weight: bold;
   margin-top: 10px;
 }

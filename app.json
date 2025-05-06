@@ -1,7 +1,9 @@
 {
   "pages": [ 
     "pages/login/login",
-    "pages/service/index"
+    "pages/index/index",
+    "pages/service/index",
+    "pages/my/index"
   ],
   "subPackages": [
     {
@@ -21,10 +23,40 @@
         "pages/search/search",
         "pages/visual/visual",
         "pages/map/map",
-        "pages/map/alumni/alumni"
+        "pages/map/alumni/alumni",
+        "pages/activity/activity",
+        "pages/activityDetail/activityDetail",
+        "pages/company/company",
+        "pages/companyDetail/companyDetail"
       ]
     }
   ],
+  "tabBar": {
+    "color": "#6e6d6b",
+    "selectedColor": "#ff9966",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/images/index.png",
+        "selectedIconPath": "/images/index.png"
+      },
+      {
+        "pagePath": "pages/service/index",
+        "text": "服务",
+        "iconPath": "/images/service.png",
+        "selectedIconPath": "/images/service.png"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "text": "我的",
+        "iconPath": "/images/my.png",
+        "selectedIconPath": "/images/my.png"
+      }
+    ]
+  },
   "window": {
     "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTitleText": "武理校友汇",
@@ -34,12 +66,6 @@
   "useExtendedLib": {
     "kbone": true,
     "weui": true
-  },
-  "plugins": {
-    "citySelector": {
-      "version": "1.0.2",
-      "provider": "wx63ffb7b7894e99ae"
-    }
   },
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents",
