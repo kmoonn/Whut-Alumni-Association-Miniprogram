@@ -8,5 +8,5 @@
     "bigPackageSizeSupport": true,
     "preloadBackgroundData": false
   },
-  "libVersion": "3.8.2"
+  "libVersion": "3.8.0"
 }

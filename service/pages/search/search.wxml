@@ -1,5 +1,5 @@
 <view class="top-bar" style="height: 160rpx; display: flex; box-sizing: border-box">
-  <text class="top-title">校友查找</text>
+  <text class="top-title">校友搜索</text>
 </view>
 <!-- 搜索栏 -->
 <view class="search-bar">
