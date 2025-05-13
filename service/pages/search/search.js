@@ -152,9 +152,10 @@ Page({
   // 显示校友详情
   showDetail(e) {
     const id = e.currentTarget.dataset.id;
+    console.log(id)
     if (id) {
       wx.navigateTo({
-        url: `/alumni/pages/famous_detail/famous_detail?id=${id}`
+        url: `/alumni/pages/famous/detail/detail?id=${id}`
       });
     } else {
       console.error('未获取到有效的 id');
