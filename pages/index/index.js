@@ -82,12 +82,11 @@ function getNewsList() {
           const newsList = res.result.result;
           newsList.forEach(news => {
             if (news.date) {
-              const date = new Date(news.date);
-              news.date = date.toLocaleDateString('zh-CN', {
-                year: 'numeric',
-                month: '2-digit',
-                day: '2-digit'
-              });
+              const formatDate = date => {
+                let d = new Date(date);
+                return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
+              };
+               news.date = formatDate(news.date);
             }
           });
           // 处理成功，将处理后的数据传递给 Promise 的 resolve 方法
