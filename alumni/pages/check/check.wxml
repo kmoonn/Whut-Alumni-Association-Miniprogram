@@ -63,7 +63,7 @@
   <view class="action-title">提交结果</view>
   <view class="action-buttons">
     <button class="reject-btn" bindtap="rejectMatch">非校友</button>
-    <button class="middle-btn" bindtap="nonMatch">不确定</button>
+    <button class="middle-btn" bindtap="nonMatch">跳过</button>
     <button class="approve-btn" bindtap="approveMatch">是校友</button>
   </view>
 </view>

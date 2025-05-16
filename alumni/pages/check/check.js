@@ -15,11 +15,12 @@ Page({
     this.setData({
       departments: departments
     });
+    this.fetchPendingMatches();
   },
 
-  onShow() {
-      this.fetchPendingMatches();
-  },
+  // onShow() {
+  //     this.fetchPendingMatches();
+  // },
 
   showError(message) {
     wx.showToast({

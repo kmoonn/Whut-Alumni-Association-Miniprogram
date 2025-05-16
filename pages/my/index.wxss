@@ -213,10 +213,13 @@
 }
 
 .confirm-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100rpx;
   line-height: 70rpx;
-  text-align: center;
   background: #007AFF;
   color: #fff;
   border-radius: 40rpx;

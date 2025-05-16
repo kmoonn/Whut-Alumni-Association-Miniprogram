@@ -24,7 +24,6 @@ Page({
       const [newsList, activities, companies] = await Promise.all([
         getNewsList(),
         getActivities()
-        // getCompanies()
       ]);
       // 处理新闻列表，只保留最新的两条
     const sortedNewsList = newsList.sort((a, b) => {
@@ -37,17 +36,9 @@ Page({
       return new Date(b.date) - new Date(a.date);
     });
     const latestActivities = sortedActivities.slice(0, 3);
-
-    // 处理公司列表，只保留最新的两条
-    // const sortedCompanies = companies.sort((a, b) => {
-    //   return new Date(b.date) - new Date(a.date);
-    // });
-    // const latestCompanies = sortedCompanies.slice(0, 3);
-
     this.setData({
       newsList: latestNewsList,
       activities: latestActivities,
-      // companies: latestCompanies
     });
   
       console.log('获取数据成功：', { newsList, activities });

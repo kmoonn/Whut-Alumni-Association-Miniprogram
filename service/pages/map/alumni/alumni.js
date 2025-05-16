@@ -58,7 +58,7 @@ Page({
     if (id) {
       wx.showLoading({ title: '加载中', mask: true });
       wx.navigateTo({
-        url: `/alumni/pages/famous/detaildetail?id=${id}`
+        url: `/alumni/pages/famous/detail/detail?id=${id}`
       });
     } else {
       console.error('未获取到有效的 id');
