@@ -4,7 +4,21 @@
 
 <view class="header" wx:if="{{!noMoreData}}">
   <view class="count">待确认数: {{pendingCount}}</view>
+  <image 
+    src="https://636c-cloud1-6gsqyvkd3f24bdd8-1311119192.tcb.qcloud.la/images/question.png?sign=caef24fbf3219578a258e3c0a44459c2&t=1747449324" 
+    class="question-icon" 
+    bindtap="toggleTooltip"
+  />
 </view>
+
+
+<t-dialog visible="{{showMultiTextAndTitle}}" title="重点校友推荐标准" confirm-btn="{{ confirmBtn }}" bind:confirm="closeDialog">
+    <scroll-view slot="content" type="list" scroll-y class="long-content">
+      <view class="content-container">1. 左侧为“校友库源信息”，作为辅助信息列，右侧为需要确认的疑似校友信息列；
+      2. 根据实际情况选择页面下方三个选项其中一项。
+      </view>
+    </scroll-view>
+  </t-dialog>
 
 <view class="empty-state" wx:if="{{noMoreData}}">
   <view class="empty-content">
@@ -63,7 +77,7 @@
   <view class="action-title">提交结果</view>
   <view class="action-buttons">
     <button class="reject-btn" bindtap="rejectMatch">非校友</button>
-    <button class="middle-btn" bindtap="nonMatch">跳过</button>
+    <button class="middle-btn" bindtap="nonMatch">不确定</button>
     <button class="approve-btn" bindtap="approveMatch">是校友</button>
   </view>
 </view>

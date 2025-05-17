@@ -69,25 +69,50 @@ const applyAlumni = async (event) => {
 const getPendingMatches = async (event) => {
     const { reviewerId, departments } = event;
 
-    try {
-        const conn = await createConnection();
+    if (!Array.isArray(departments) || departments.length < 2) {
+        return { code: 400, message: '请至少选择两个学院进行审核' };
+    }
 
-        // 构建 SQL 占位符
-        const placeholders = departments.map(() => '?').join(',');
+    // 构建 WHERE 条件和参数
+    const buildDepartmentCondition = (departments, reviewerId) => {
+        const OTHER_LABEL = '其他';
+        const hasOther = departments.includes(OTHER_LABEL);
+        const realDepartments = departments.filter(d => d !== OTHER_LABEL);
 
-        // 获取待审核总数
-        const [countRows] = await conn.execute(
-            `
-            SELECT COUNT(*) as total 
-            FROM pending_alumni p
-            WHERE p.status = '待确认'
-            AND p.department IN (${placeholders})
+        let whereClause = `p.status = '待确认' AND (`;
+        const conditions = [];
+        const queryParams = [];
+
+        if (realDepartments.length > 0) {
+            conditions.push(`p.department IN (${realDepartments.map(() => '?').join(',')})`);
+            queryParams.push(...realDepartments);
+        }
+
+        if (hasOther) {
+            conditions.push(`p.department IS NULL`);
+        }
+
+        whereClause += conditions.join(' OR ') + `)
             AND NOT EXISTS (
                 SELECT 1 FROM review_note r 
                 WHERE r.alum_id = p.id AND r.user_id = ?
-            )
-            `,
-            [...departments, reviewerId]
+            )`;
+
+        queryParams.push(reviewerId);
+
+        return { whereClause, queryParams };
+    };
+
+    try {
+        const conn = await createConnection();
+        const { whereClause, queryParams } = buildDepartmentCondition(departments, reviewerId);
+
+        // 获取待审核总数
+        const [countRows] = await conn.execute(
+            `SELECT COUNT(*) as total 
+             FROM pending_alumni p
+             WHERE ${whereClause}`,
+            queryParams
         );
 
         // 获取一条待审核校友信息
@@ -118,17 +143,10 @@ const getPendingMatches = async (event) => {
                 s.job_title AS source_position
             FROM pending_alumni p
             LEFT JOIN source_alumni s ON p.source_id = s.id
-            WHERE p.status = '待确认' 
-            AND p.department IN (${placeholders})
-            AND NOT EXISTS (
-                SELECT 1 
-                FROM review_note r 
-                WHERE r.alum_id = p.id 
-                AND r.user_id = ?
-            )
+            WHERE ${whereClause}
             LIMIT 1
             `,
-            [...departments, reviewerId]
+            queryParams
         );
 
         if (rows.length === 0) {
@@ -136,8 +154,8 @@ const getPendingMatches = async (event) => {
                 code: 200,
                 message: '没有待确认数据',
                 data: {
-                    sourcealumni: null,
-                    pendingalumni: null,
+                    sourceAlumni: null,
+                    pendingAlumni: null,
                     pendingCount: countRows[0].total
                 }
             };
@@ -145,7 +163,7 @@ const getPendingMatches = async (event) => {
 
         const row = rows[0];
 
-        const pendingalumni = {
+        const pendingAlumni = {
             id: row.pending_id,
             name: row.pending_name,
             sex: row.pending_sex,
@@ -160,9 +178,9 @@ const getPendingMatches = async (event) => {
             source: row.source
         };
 
-        let sourcealumni = null;
+        let sourceAlumni = null;
         if (row.source_id) {
-            sourcealumni = {
+            sourceAlumni = {
                 id: row.source_id,
                 name: row.source_name,
                 sex: row.source_sex,
@@ -180,8 +198,8 @@ const getPendingMatches = async (event) => {
             code: 200,
             message: '获取成功',
             data: {
-                sourcealumni,
-                pendingalumni,
+                sourceAlumni,
+                pendingAlumni,
                 pendingCount: countRows[0].total
             }
         };

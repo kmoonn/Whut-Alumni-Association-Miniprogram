@@ -133,7 +133,7 @@ exports.main = async (event) => {
             return await login(event);
         case 'register':
             return await register(event);
-        case 'changePassword':
+        case 'updatePwd':
             return await changePassword(event);
         default:
             return { success: false, message: '无效的操作' };

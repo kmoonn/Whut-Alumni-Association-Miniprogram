@@ -1,6 +1,7 @@
 {
   "usingComponents" : {
-    "t-link" : "tdesign-miniprogram/link/link"
+    "t-link" : "tdesign-miniprogram/link/link",
+    "t-dialog" : "tdesign-miniprogram/dialog/dialog"
   },
   "enablePullDownRefresh" : true
 }

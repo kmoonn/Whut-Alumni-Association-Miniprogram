@@ -23,6 +23,7 @@ Page({
             success: res => {
                 if (res.result.code === 200) {
                     const deptList = res.result.result.map(item => item.dept_name);
+                    deptList.push('其他');
                     this.setData({
                         departmentList: deptList
                     });

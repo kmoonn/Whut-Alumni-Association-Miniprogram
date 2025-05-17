@@ -8,8 +8,11 @@ Page({
     remark:'',
     reasonOptions: ['查询档案', '本人认识', '询问他人', '其他'],
     noMoreData: false,
+    confirmBtn: { content: '我已知晓', variant: 'base' },
+    dialogKey: '',
+    showMultiTextAndTitle: false
   },
-
+  
   onLoad: function(options) {
     const departments = JSON.parse(decodeURIComponent(options.departments));
     this.setData({
@@ -17,10 +20,6 @@ Page({
     });
     this.fetchPendingMatches();
   },
-
-  // onShow() {
-  //     this.fetchPendingMatches();
-  // },
 
   showError(message) {
     wx.showToast({
@@ -93,6 +92,19 @@ Page({
       this.showError('获取数据失败');
     });
   },
+
+  toggleTooltip() {
+    this.setData({ showMultiTextAndTitle: true, dialogKey: 'showMultiTextAndTitle' });
+  },
+
+  showDialog(e) {
+    const { key } = e.currentTarget.dataset;
+    this.setData({ [key]: true, dialogKey: key });
+},
+closeDialog() {
+    const { dialogKey } = this.data;
+    this.setData({ [dialogKey]: false });
+},
 
   rejectMatch() {
     this.submitMatch('非校友');

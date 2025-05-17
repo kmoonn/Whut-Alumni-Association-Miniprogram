@@ -77,3 +77,15 @@
   color: #eee;
   box-shadow: none;
 }
+
+.other-item {
+  background-color: #fff7e6;  /* 比如淡黄色背景 */
+  border: 1px solid #ff9900;
+  border-radius: 8rpx;
+  padding: 10rpx;
+}
+
+.other-item .checkbox-text {
+  color: #ff6600; /* 文字颜色也变一下 */
+  font-weight: bold;
+}

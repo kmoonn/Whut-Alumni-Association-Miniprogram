@@ -3,13 +3,13 @@
   <view class="subtitle">（请至少选择两项）</view>
 
   <checkbox-group class="checkbox-group" bindchange="onCheckboxChange">
-    <block wx:for="{{departmentList}}" wx:key="item">
-      <label class="checkbox-item">
-        <checkbox value="{{item}}" class="checkbox" />
-        <text class="checkbox-text">{{item}}</text>
-      </label>
-    </block>
-  </checkbox-group>
+  <block wx:for="{{departmentList}}" wx:key="item">
+    <label class="checkbox-item {{item === '其他' ? 'other-item' : ''}}">
+      <checkbox value="{{item}}" class="checkbox" />
+      <text class="checkbox-text">{{item}}</text>
+    </label>
+  </block>
+</checkbox-group>
 
   <view class="btn-wrapper">
     <button
