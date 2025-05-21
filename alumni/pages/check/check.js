@@ -182,5 +182,19 @@ closeDialog() {
       console.error('提交失败', err);
       this.showError('提交失败');
     });
-  }
+  },
+
+  copyLink() {
+    const url = this.data.pendingInfo.source;
+    wx.setClipboardData({
+      data: url,
+      success() {
+        wx.showModal({
+          title: '提示',
+          content: '链接已复制，请在浏览器中粘贴打开',
+          showCancel: false
+        });
+      }
+    });
+  }  
 });

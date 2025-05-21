@@ -63,14 +63,22 @@
 </view>
 
 
-<view class="source-info" wx:if="{{!noMoreData}}">
+<!-- <view class="source-info" wx:if="{{!noMoreData}}">
   <text class="label">疑似校友信息来源：</text>
   <navigator 
     url="/alumni/pages/check/source/source?url={{pendingInfo.source}}" 
     class="link">
     <t-link size="small" theme="primary" content="跳转链接" prefixIcon="link" hover />
   </navigator>
+</view> -->
+
+<view class="source-info" wx:if="{{!noMoreData}}">
+  <text class="label">疑似校友信息来源：</text>
+  <view class="link" bindtap="copyLink">
+    <t-link size="small" theme="primary" content="点击复制链接，在浏览器中打开" prefixIcon="link" hover />
+  </view>
 </view>
+
 
 
 <view class="action-area" wx:if="{{!noMoreData}}">

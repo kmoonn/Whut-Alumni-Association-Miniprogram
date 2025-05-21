@@ -1,7 +1,6 @@
 {
   "usingComponents" : {
     "selector-component": "plugin://citySelector/selector-component",
-    "t-cell" : "tdesign-miniprogram/cell/cell",
-    "t-cell-group" : "tdesign-miniprogram/cell-group/cell-group"
+    "t-cell" : "tdesign-miniprogram/cell/cell"
   }
 }
