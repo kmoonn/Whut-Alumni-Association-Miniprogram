@@ -87,17 +87,22 @@
 
 .details {
   display: flex;
-  align-items: center;
+  justify-content: space-between;
+  
   font-size: 28rpx;
   color: #666;
 }
 
 .position {
   color: #333;
-  width: 80px; 
-  white-space: nowrap; 
-  overflow: hidden; 
-  text-overflow: ellipsis; 
+  width: 40%;
+  display: -webkit-box;      /* 必须：创建弹性伸缩盒子 */
+  -webkit-box-orient: vertical; /* 必须：设置子元素垂直排列 */
+  -webkit-line-clamp: 2;     /* 最多显示两行 */
+  overflow: hidden;          /* 超出部分隐藏 */
+  text-overflow: ellipsis;   /* 超出部分用省略号表示 */
+  line-height: 1.2em;        /* 行高，用于计算容器高度 */
+  max-height: 2.4em;         /* 最大高度 = 行高 × 2 */
 }
 
 .divider {
@@ -106,17 +111,20 @@
 
 .company {
   color: #007AFF;
-  width: 180px; 
-  max-height: calc(2 * 1.2em); /* 假设行高为 1.2em，两行的最大高度 */
-    line-height: 1.2em;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2; /* 最多显示两行 */
+  width: 60%; 
+  line-height: 1.2em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /* 最多显示两行 */
+  margin-right: 8%;
+    
 }
 
 .arrow {
+  width: 10%;
   font-size: 36rpx;
-  color: #999;
+  position: absolute; /* 开启绝对定位 */
+  right: 0; /* 右侧对齐 */
 }
