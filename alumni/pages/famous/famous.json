@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "知名校友",
+  "navigationBarTitleText": "重点校友",
   "component": true,
   "usingComponents": {
     "t-tabs": "tdesign-miniprogram/tabs/tabs",

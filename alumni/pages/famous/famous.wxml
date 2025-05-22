@@ -16,11 +16,10 @@
         <view class="name">{{item.name}}</view>
         <view class="details">
           <text class="position">{{item.position}}</text>
-          <text class="divider"> | </text>
           <text class="company">{{item.company}}</text>
         </view>
       </view>
-      <view class="arrow">👉</view>
+      <view class="arrow"><image src="https://image.kmoon.fun/2025/202505221700091.png"></image></view>
     </view>
   </scroll-view>
 </view>

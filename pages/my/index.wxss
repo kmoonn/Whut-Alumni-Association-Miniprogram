@@ -208,7 +208,7 @@
 }
 
 .modal-footer {
-  padding: 20rpx;
+  padding: 10rpx;
   border-top: 1rpx solid #eee;
 }
 
@@ -217,9 +217,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100rpx;
-  line-height: 70rpx;
+  width: 50%;
+  height: 80rpx;
+  line-height: 7rpx;
   background: #007AFF;
   color: #fff;
   border-radius: 40rpx;

@@ -42,12 +42,12 @@
     </picker>
   </view>
   <view class="form-item">
-    <text class="label">所在学院</text>
-    <input class="input" placeholder="请输入学院" bindinput="onInputChange" data-field="department" />
+    <text class="label">毕业学院</text>
+    <input class="input" placeholder="请输入毕业学院" bindinput="onInputChange" data-field="department" />
   </view>
   <view class="form-item">
-    <text class="label">专业</text>
-    <input class="input" placeholder="请输入专业" bindinput="onInputChange" data-field="major" />
+    <text class="label">毕业专业</text>
+    <input class="input" placeholder="请输入毕业专业" bindinput="onInputChange" data-field="major" />
   </view>
 
   <view class="form-item">
@@ -71,16 +71,13 @@
   </view>
 
   <t-dialog visible="{{showMultiTextAndTitle}}" title="重点校友推荐标准" confirm-btn="{{ confirmBtn }}" bind:confirm="closeDialog">
-    <scroll-view slot="content" type="list" scroll-y class="long-content">
-      <view class="content-container">1. 中央机关及其直属机构工作人员；
-        2. 各地方机关及有关单位副处级及以上人员；
-        3. 高校和科研机构副高级职称及以上人员；
-        4. 目前运行良好的各类企业高管及以上负责人员；
-        5. 获省部级及以上奖励和荣誉称号人员；
-        6. 其他重点校友。
-      </view>
-    </scroll-view>
-  </t-dialog>
+  <scroll-view slot="content" type="list" scroll-y class="long-content">
+    <text class="content-container" decode="{{true}}">
+1. 中央机关及其直属机构工作人员；\n2. 各地方机关及有关单位副处级及以上人员；\n3. 高校和科研机构副高级职称及以上人员；\n4. 目前运行良好的各类企业高管及以上负责人员；\n5. 获省部级及以上奖励和荣誉称号人员；\n6. 其他重点校友。
+    </text>
+  </scroll-view>
+</t-dialog>
+
 
   <button class="submit-btn" bindtap="submitForm" disabled="{{!isAgreed}}">提交</button>
 </view>

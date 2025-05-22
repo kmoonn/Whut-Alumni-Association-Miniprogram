@@ -18,84 +18,11 @@
   font-weight: bold;
   margin-top: 10px;
 }
-/* 侧边栏 */
-.sidebar {
-  width: 160rpx;
-  background: #ffffff;
-  display: flex;
-  flex-direction: column;
-  border-right: 1rpx solid #f0f0f0;
-  padding-top: 50rpx;
-}
-.trigger{
-  font-size: 60rpx;
-  position: fixed;
-  top: 20rpx;  
-  left: 20rpx;   
-  z-index: 999;   
-}
-.sidebar-item {
-  padding: 30rpx;
-  font-size: 30rpx;
-  text-align: center;
-  border-bottom: 2rpx solid #ddd;
-}
 
-.sidebar-item.active {
-  background-color: #007AFF;
-  color: white;
-  font-weight: bold;
-}
-
-/* 校友列表 */
-.alumni-list {
-  padding: 20rpx;
-}
-
-.alumni-item {
-  display: flex;
-  align-items: center;
-  padding: 20rpx;
-  background: #fff;
-  border-radius: 20rpx;
-  box-shadow: 0 5rpx 15rpx rgba(0, 0, 0, 0.1);
-  margin-bottom: 20rpx;
-  transition: all 0.3s ease;
-}
-
-.alumni-item:hover {
-  transform: scale(1.02);
-}
-
-.avatar {
-  width: 100rpx;
-  height: 100rpx;
-  border-radius: 50%;
-  margin-right: 20rpx;
-}
-.info {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.name {
-  font-size: 34rpx;
-  font-weight: bold;
-}
-
-.details {
-  display: flex;
-  justify-content: space-between;
-  
-  font-size: 28rpx;
-  color: #666;
-}
 
 .position {
   color: #333;
-  width: 40%;
+  width: 50%;
   display: -webkit-box;      /* 必须：创建弹性伸缩盒子 */
   -webkit-box-orient: vertical; /* 必须：设置子元素垂直排列 */
   -webkit-line-clamp: 2;     /* 最多显示两行 */
@@ -105,9 +32,6 @@
   max-height: 2.4em;         /* 最大高度 = 行高 × 2 */
 }
 
-.divider {
-  margin: 0 10rpx;
-}
 
 .company {
   color: #007AFF;
@@ -119,12 +43,85 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2; /* 最多显示两行 */
   margin-right: 8%;
-    
+}
+
+/* 外层内容容器 */
+.main-content {
+  padding: 20rpx;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+}
+
+.alumni-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.alumni-item {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  border: 3rpx solid #e5e5e5;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+  transition: background-color 0.2s;
+}
+
+.alumni-item:active {
+  background-color: #f0f0f0;
+}
+
+.info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10rpx;
+}
+
+.name {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333333;
+}
+
+.details {
+  font-size: 26rpx;
+  color: #888888;
+  display: flex;
+  flex-direction: column;
+  gap: 6rpx;
+  flex-wrap: nowrap;
+}
+
+.position,
+.company {
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.4em;
+  max-height: 2.8em;
+  width: 100%;
+}
+
+.divider {
+  margin: 0 10rpx;
+  color: #cccccc;
 }
 
 .arrow {
-  width: 10%;
-  font-size: 36rpx;
-  position: absolute; /* 开启绝对定位 */
-  right: 0; /* 右侧对齐 */
+  width: 40rpx;
+  height: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow image {
+  width: 100%;
+  height: 100%;
 }
