@@ -29,8 +29,12 @@ Page({
   },
 
   formatDate(date) {
-    const d = new Date(date);
-    return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
+    //const d = new Date(date);
+    const year = date.substr(0, 4);
+    const month = date.substr(5, 2).padStart(2, '0');
+    const day = date.substr(8, 2).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+    //return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
   },
 
   showAgreement(callback) {
