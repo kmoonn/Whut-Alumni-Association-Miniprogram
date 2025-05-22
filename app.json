@@ -40,20 +40,20 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "/images/index.jpg",
-        "selectedIconPath": "/images/index.jpg"
+        "iconPath": "/images/index.png",
+        "selectedIconPath": "/images/index.png"
       },
       {
         "pagePath": "pages/service/index",
         "text": "服务",
-        "iconPath": "/images/service.jpg",
-        "selectedIconPath": "/images/service.jpg"
+        "iconPath": "/images/service.png",
+        "selectedIconPath": "/images/service.png"
       },
       {
         "pagePath": "pages/my/index",
         "text": "我的",
-        "iconPath": "/images/my.jpg",
-        "selectedIconPath": "/images/my.jpg"
+        "iconPath": "/images/my.png",
+        "selectedIconPath": "/images/my.png"
       }
     ]
   },
