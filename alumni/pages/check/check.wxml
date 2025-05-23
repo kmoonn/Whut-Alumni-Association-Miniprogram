@@ -36,7 +36,7 @@
       <view class="section-title">校友库源信息</view>
       <view class="card">
         <text class="info">姓名: {{sourceInfo.name}}</text>
-        <text class="info {{diffFields.includes('gender') ? 'diff' : ''}}">性别: {{sourceInfo.gender}}</text>
+        <text class="info {{diffFields.includes('gender') ? 'diff' : ''}}">性别: {{sourceInfo.sex}}</text>
         <text class="info {{diffFields.includes('birthday') ? 'diff' : ''}}">生日: {{sourceInfo.birthday}}</text>
         <text class="info {{diffFields.includes('graduation_year') ? 'diff' : ''}}">毕业年份: {{sourceInfo.graduation_year}}</text>
         <text class="info {{diffFields.includes('department') ? 'diff' : ''}}">学院: {{sourceInfo.department}}</text>
@@ -51,7 +51,7 @@
       <view class="section-title">疑似校友信息（待确认）</view>
       <view class="card">
         <text class="info">姓名: {{pendingInfo.name}}</text>
-        <text class="info {{diffFields.includes('gender') ? 'diff' : ''}}">性别: {{pendingInfo.gender}}</text>
+        <text class="info {{diffFields.includes('gender') ? 'diff' : ''}}">性别: {{pendingInfo.sex}}</text>
         <text class="info {{diffFields.includes('birthday') ? 'diff' : ''}}">生日: {{pendingInfo.birthday}}</text>
         <text class="info {{diffFields.includes('graduation_year') ? 'diff' : ''}}">毕业年份: {{pendingInfo.graduation_year}}</text>
         <text class="info {{diffFields.includes('department') ? 'diff' : ''}}">学院: {{pendingInfo.department}}</text>
