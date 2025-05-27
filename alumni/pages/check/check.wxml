@@ -15,9 +15,7 @@
 <t-dialog visible="{{showMultiTextAndTitle}}" title="疑似校友确认要求" confirm-btn="{{ confirmBtn }}" bind:confirm="closeDialog">
   <scroll-view slot="content" type="list" scroll-y class="long-content">
     <text class="content-container" decode="{{true}}">
-1. 若有两列信息，左侧为“校友库源信息”，作为辅助信息列，右侧为需要确认的疑似校友信息列；\n
-2. 若只有单列信息，则该信息为需要确认的疑似校友信息；\n
-3. 根据实际情况选择页面下方三个选项其中一项。
+1. 若有两列信息，左侧为“校友库源信息”，作为辅助信息列，右侧为需要确认的疑似校友信息列；\n2. 若只有单列信息，则该信息为需要确认的疑似校友信息；\n3. 根据实际情况选择页面下方三个选项其中一项。
     </text>
   </scroll-view>
 </t-dialog>

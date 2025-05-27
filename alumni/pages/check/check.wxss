@@ -20,7 +20,6 @@
   margin-top: 10px;
 }
 
-/* 头部部分 */
 .header {
   display: flex;
   justify-content: center;       /* 横向居中 */
@@ -33,8 +32,8 @@
 }
 
 .question-icon {
-  width: 32rpx;
-  height: 32rpx;
+  width: 38rpx;
+  height: 38rpx;
 }
 
 
@@ -88,7 +87,7 @@
 
 /* 信息对比容器 */
 .comparison-container {
-  padding: 20rpx;
+  padding: 5rpx;
   background-color: #fff;
 }
 
@@ -96,7 +95,7 @@
 .info-comparison {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20rpx;
+  margin-bottom: 25rpx;
 }
 
 .info-section {
@@ -108,7 +107,7 @@
 }
 
 .section-title {
-  font-size: 32rpx;
+  font-size: 30rpx;
   font-weight: bold;
   color: #333;
   margin-bottom: 15rpx;
@@ -120,9 +119,11 @@
 }
 
 .info {
-  font-size: 28rpx;
-  color: #555;
-  margin-bottom: 18rpx;
+  font-size: 26rpx;
+  color: rgb(0, 0, 0);
+  margin-bottom: 30rpx;
+  white-space: normal;
+  word-break: break-word;
 }
 
 .diff {
@@ -147,16 +148,6 @@
   align-items: center;
 }
 
-/* 来源链接多行显示，最多2行，超出显示省略号 */
-.info {
-  display: -webkit-box;          
-  -webkit-box-orient: vertical;  
-  -webkit-line-clamp: 2;         
-  overflow: hidden;           
-  text-overflow: ellipsis;      
-  word-break: break-all;      
-}
-
 .link-example {
   display: flex;
   align-items: center;
@@ -164,7 +155,6 @@
   height: 96rpx;
   background-color: var(--bg-color-demo);
 }
-
 
 .navigator-hover {
   opacity: 0.7;
