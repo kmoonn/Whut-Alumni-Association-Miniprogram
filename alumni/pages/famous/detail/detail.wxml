@@ -1,20 +1,38 @@
 <view class="top-bar">
-
   <text class="title">校友详情</text>
 </view>
 
-
 <view class="alumni-info">
-  <text class="category" data-label="类别">{{alumniDetail.category}}</text>
-  <text data-label="姓名">{{alumniDetail.name}}</text>
-  <text data-label="所在地">{{alumniDetail.region}}</text>
-  <text data-label="工作单位">{{alumniDetail.company}}</text>
-  <text data-label="职务">{{alumniDetail.position}}</text>
-  <text data-label="毕业年份">{{alumniDetail.graduation_year}}</text>
-  <text data-label="专业">{{alumniDetail.major}}</text>   
-  <!-- 只有当deeds不为空才显示 -->
-  <text wx:if="{{alumniDetail.deeds && alumniDetail.deeds.trim() !== ''}}" 
-    data-label="重大荣誉或事迹">{{alumniDetail.deeds}}
-  </text>
-  
+  <view class="info-item">
+    <text class="label">类别</text>
+    <text class="value">{{alumniDetail.category}}</text>
+  </view>
+  <view class="info-item">
+    <text class="label">姓名</text>
+    <text class="value">{{alumniDetail.name}}</text>
+  </view>
+  <view class="info-item">
+    <text class="label">所在地</text>
+    <text class="value">{{alumniDetail.region}}</text>
+  </view>
+  <view class="info-item">
+    <text class="label">工作单位</text>
+    <text class="value">{{alumniDetail.company}}</text>
+  </view>
+  <view class="info-item">
+    <text class="label">职务</text>
+    <text class="value">{{alumniDetail.position}}</text>
+  </view>
+  <view class="info-item">
+    <text class="label">毕业年份</text>
+    <text class="value">{{alumniDetail.graduation_year}}</text>
+  </view>
+  <view class="info-item">
+    <text class="label">专业</text>
+    <text class="value">{{alumniDetail.major}}</text>
+  </view>
+  <view wx:if="{{alumniDetail.deeds && alumniDetail.deeds.trim() !== ''}}" class="info-item">
+    <text class="label">重大荣誉或事迹</text>
+    <text class="value">{{alumniDetail.deeds}}</text>
+  </view>
 </view>

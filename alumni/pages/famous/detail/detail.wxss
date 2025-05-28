@@ -1,42 +1,42 @@
 .top-bar {
-  display: flex;
-  padding: 15px 13px;
-  background: linear-gradient(to right, #0056b3, #007bff);
-  color: white;
-  font-size: 40rpx;
-  font-weight: bold;
-}
-
-.logo {
-  width: 250px;
-  height: 50px;
-  margin-right: 30px;
+  background: linear-gradient(to right, #1d60dd, #285fb3);
+  padding: 20rpx 30rpx;
+  text-align: center;
 }
 
 .title {
-  font-size: 18px;
+  color: #ffffff;
+  font-size: 36rpx;
   font-weight: bold;
-  margin-top: 10px;
-}
-.category {
-  margin-top: 10%;
 }
 
-.alumni-info text {
-  display: flex; 
-  margin-bottom: 10px;
-  padding-right: 5%;
-  padding-left: 10%;
-  max-width: 90%; /* 确保内容不超过右侧区域 */
+.alumni-info {
+  padding: 30rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 30rpx;
+  background-color: #f7f8fa;
 }
 
-.alumni-info text[data-label]::before {
-  content: attr(data-label);
-  width: 35%;
-  color: #007AFF;
+/* 单个条目布局 */
+.info-item {
+  background: #ffffff;
+  border-radius: 16rpx;
+  padding: 24rpx 30rpx;
+  box-shadow: 0 6rpx 12rpx rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
   font-size: 28rpx;
-  margin-bottom: 16rpx;
-  text-align: left;
-  flex-shrink: 0; /* 防止标签被压缩 */
+  color: #888;
+  margin-bottom: 8rpx;
 }
 
+.value {
+  font-size: 32rpx;
+  color: #333;
+  font-weight: 500;
+  line-height: 1.4;
+}
