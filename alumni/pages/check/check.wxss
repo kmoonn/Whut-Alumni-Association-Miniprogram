@@ -57,10 +57,9 @@
 }
 
 .empty-text {
-  font-size: 24px;
-  color: #333333;
+  font-size: 14px;
+  color: #ff3939;
   margin-bottom: 30px;
-  font-weight: bold;
 }
 
 .refresh-btn {
@@ -98,9 +97,17 @@
   margin-bottom: 25rpx;
 }
 
-.info-section {
-  width: 50%;
-  background-color: #fafafa;
+
+.info-section-pending {
+  flex:1;
+  background-color: #f9f6ef;
+  padding: 20rpx;
+  border-radius: 10rpx;
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+.info-section-source {
+  flex:1;
+  background-color: #d9e1eb;
   padding: 20rpx;
   border-radius: 10rpx;
   box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.1);

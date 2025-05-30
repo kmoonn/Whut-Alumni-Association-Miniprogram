@@ -36,6 +36,10 @@
     <input class="input" placeholder="请输入职务" bindinput="onInputChange" data-field="position" />
   </view>
   <view class="form-item">
+    <text class="label">学位</text>
+    <input class="input" placeholder="请输入学位等级" bindinput="onInputChange" data-field="department" />
+  </view>
+  <view class="form-item">
     <text class="label">毕业年份</text>
     <picker mode="date" fields="year" bindchange="onDateChange">
       <view class="picker">{{graduation_year || '请选择毕业年份'}}</view>
@@ -45,8 +49,9 @@
     <text class="label">毕业学院</text>
     <input class="input" placeholder="请输入毕业学院" bindinput="onInputChange" data-field="department" />
   </view>
+  
   <view class="form-item">
-    <text class="label">毕业专业</text>
+    <text class="label">毕业专业<text class="required">*</text></text>
     <input class="input" placeholder="请输入毕业专业" bindinput="onInputChange" data-field="major" />
   </view>
 

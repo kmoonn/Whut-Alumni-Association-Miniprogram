@@ -15,7 +15,8 @@
 <t-dialog visible="{{showMultiTextAndTitle}}" title="疑似校友确认要求" confirm-btn="{{ confirmBtn }}" bind:confirm="closeDialog">
   <scroll-view slot="content" type="list" scroll-y class="long-content">
     <text class="content-container" decode="{{true}}">
-1. 若有两列信息，左侧为“校友库源信息”，作为辅助信息列，右侧为需要确认的疑似校友信息列；\n2. 若只有单列信息，则该信息为需要确认的疑似校友信息；\n3. 根据实际情况选择页面下方三个选项其中一项。
+1. 左侧为需要确认的疑似校友信息，右侧为“校友库源信息”，作为辅助信息；\n
+2. 根据实际情况选择页面下方三个选项其中一项。
     </text>
   </scroll-view>
 </t-dialog>
@@ -30,22 +31,8 @@
 
 <view class="comparison-container" wx:if="{{!noMoreData}}">
   <view class="info-comparison">
-    <view class="info-section" wx:if="{{sourceInfo}}">
-      <view class="section-title">校友库源信息</view>
-      <view class="card">
-        <text class="info">姓名: {{sourceInfo.name}}</text>
-        <text class="info {{diffFields.includes('gender') ? 'diff' : ''}}">性别: {{sourceInfo.sex}}</text>
-        <text class="info {{diffFields.includes('birthday') ? 'diff' : ''}}">生日: {{sourceInfo.birthday}}</text>
-        <text class="info {{diffFields.includes('graduation_year') ? 'diff' : ''}}">毕业年份: {{sourceInfo.graduation_year}}</text>
-        <text class="info {{diffFields.includes('department') ? 'diff' : ''}}">学院: {{sourceInfo.department}}</text>
-        <text class="info {{diffFields.includes('major') ? 'diff' : ''}}">专业: {{sourceInfo.major}}</text>
-        <text class="info {{diffFields.includes('region') ? 'diff' : ''}}">所在地: {{sourceInfo.region || ''}}</text>
-        <text class="info {{diffFields.includes('company') ? 'diff' : ''}}">工作单位: {{sourceInfo.company || ''}}</text>
-        <text class="info {{diffFields.includes('position') ? 'diff' : ''}}">职务: {{sourceInfo.position || ''}}</text>
-      </view>
-    </view>
-
-    <view class="info-section">
+    
+    <view class="info-section-pending">
       <view class="section-title">疑似校友信息（待确认）</view>
       <view class="card">
         <text class="info">姓名: {{pendingInfo.name}}</text>
@@ -59,6 +46,27 @@
         <text class="info {{diffFields.includes('position') ? 'diff' : ''}}">职务: {{pendingInfo.position}}</text>
       </view>
     </view>
+
+    <view class="info-section-source">
+      <view class="section-title">校友库源信息</view>
+      <!-- 有数据时显示信息卡片 -->
+      <view class="card" wx:if="{{sourceInfo && hasValidSourceInfo}}">
+        <text class="info">姓名: {{sourceInfo.name || '未填写'}}</text>
+        <text class="info {{diffFields.includes('gender') ? 'diff' : ''}}">性别: {{sourceInfo.sex || '未填写'}}</text>
+        <text class="info {{diffFields.includes('birthday') ? 'diff' : ''}}">生日: {{sourceInfo.birthday || '未填写'}}</text>
+        <text class="info {{diffFields.includes('graduation_year') ? 'diff' : ''}}">毕业年份: {{sourceInfo.graduation_year || '未填写'}}</text>
+        <text class="info {{diffFields.includes('department') ? 'diff' : ''}}">学院: {{sourceInfo.department || '未填写'}}</text>
+        <text class="info {{diffFields.includes('major') ? 'diff' : ''}}">专业: {{sourceInfo.major || '未填写'}}</text>
+        <text class="info {{diffFields.includes('region') ? 'diff' : ''}}">所在地: {{sourceInfo.region || '未填写'}}</text>
+        <text class="info {{diffFields.includes('company') ? 'diff' : ''}}">工作单位: {{sourceInfo.company || '未填写'}}</text>
+        <text class="info {{diffFields.includes('position') ? 'diff' : ''}}">职务: {{sourceInfo.position || '未填写'}}</text>
+      </view>
+      
+      <!-- 无数据时显示提示信息 -->
+      <view class="empty-tip" wx:else>
+        <text class="empty-text">暂无校友库源信息</text>
+      </view>
+</view>
   </view>
 </view>
 
