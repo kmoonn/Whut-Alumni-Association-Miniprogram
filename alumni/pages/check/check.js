@@ -10,7 +10,8 @@ Page({
     noMoreData: false,
     confirmBtn: { content: '我已知晓', variant: 'base' },
     dialogKey: '',
-    showMultiTextAndTitle: false
+    showMultiTextAndTitle: false,
+    showModal: true
   },
   
   onLoad: function(options) {
@@ -104,11 +105,11 @@ Page({
   showDialog(e) {
     const { key } = e.currentTarget.dataset;
     this.setData({ [key]: true, dialogKey: key });
-},
-closeDialog() {
+  },
+  closeDialog() {
     const { dialogKey } = this.data;
     this.setData({ [dialogKey]: false });
-},
+  },
 
   rejectMatch() {
     this.submitMatch('非校友');
@@ -122,16 +123,12 @@ closeDialog() {
     this.submitMatch('是校友');
   },
 
-
   submitMatch(result) {
-
     if (result === '不确定') {
       this.doSubmit(result, '');
       return;
     }
-
     const reasonList = this.data.reasonOptions;
-
     wx.showActionSheet({
       itemList: reasonList,
       success: (res) => {
@@ -200,5 +197,20 @@ closeDialog() {
         });
       }
     });
-  }  
+  },
+
+  checkReviewStatus() {
+  setTimeout(() => {
+    this.setData({
+      showModal: true
+    });
+  }, 1000);
+},
+
+closeModal() {
+  this.setData({
+    showModal: false
+  });
+}
 });
+

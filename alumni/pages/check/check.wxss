@@ -220,3 +220,119 @@
 .reject-btn:hover, .approve-btn:hover {
   opacity: 0.8;
 }
+
+/* 弹窗整体样式 */
+.modal-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* 遮罩层样式 */
+.modal-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+}
+
+/* 弹窗内容样式 */
+.modal-content {
+  position: relative;
+  background-color: #FFFFFF;
+  border-radius: 16rpx;
+  width: 700rpx;
+  max-width: 90%;
+  box-shadow: 0 4rpx 30rpx rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: modalShow 0.3s ease-out;
+}
+
+/* 弹窗头部样式 */
+.popup-header {
+  padding: 30rpx 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 1rpx solid #EEEEEE;
+}
+
+.popup-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 10rpx;
+}
+
+.popup-subtitle {
+  font-size: 14px;
+  font-weight: 400;
+  color: #666666;
+}
+
+/* 弹窗内容区样式 */
+.popup-content {
+  padding: 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 180rpx;
+}
+
+.congrats-text {
+  font-size: 16px;
+  font-weight: 500;
+  color: #52C41A;
+  text-align: center;
+}
+
+/* 弹窗底部样式 */
+.modal-footer {
+  padding: 30rpx 40rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.modal-btn {
+  width: 500rpx;
+  height: 88rpx;
+  background-color: #1677FF;
+  color: #FFFFFF;
+  border-radius: 44rpx;
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.modal-btn:active {
+  transform: scale(0.98);
+  background-color: #0D64D2;
+}
+
+/* 弹窗显示动画 */
+@keyframes modalShow {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

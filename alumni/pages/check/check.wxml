@@ -3,7 +3,7 @@
 </view>
 
 <view class="header" wx:if="{{!noMoreData}}">
-  <view class="count">待确认数: {{pendingCount}}</view>
+  <view class="count">审核进度: {{pendingCount}}/100</view>
   <image 
     src="https://636c-cloud1-6gsqyvkd3f24bdd8-1311119192.tcb.qcloud.la/images/question.png?sign=caef24fbf3219578a258e3c0a44459c2&t=1747449324" 
     class="question-icon" 
@@ -23,11 +23,10 @@
 
 <view class="empty-state" wx:if="{{noMoreData}}">
   <view class="empty-content">
-    <text class="empty-text">暂无待确认数据</text>
+    <text class="empty-text">所选学院已全部审核</text>
     <button class="refresh-btn" bindtap="fetchPendingMatches">刷新</button>
   </view>
 </view>
-
 
 <view class="comparison-container" wx:if="{{!noMoreData}}">
   <view class="info-comparison">
@@ -50,7 +49,7 @@
     <view class="info-section-source">
       <view class="section-title">校友库源信息</view>
       <!-- 有数据时显示信息卡片 -->
-      <view class="card" wx:if="{{sourceInfo && hasValidSourceInfo}}">
+      <view class="card" wx:if="{{sourceInfo}}">
         <text class="info">姓名: {{sourceInfo.name || '未填写'}}</text>
         <text class="info {{diffFields.includes('gender') ? 'diff' : ''}}">性别: {{sourceInfo.sex || '未填写'}}</text>
         <text class="info {{diffFields.includes('birthday') ? 'diff' : ''}}">生日: {{sourceInfo.birthday || '未填写'}}</text>
@@ -61,7 +60,6 @@
         <text class="info {{diffFields.includes('company') ? 'diff' : ''}}">工作单位: {{sourceInfo.company || '未填写'}}</text>
         <text class="info {{diffFields.includes('position') ? 'diff' : ''}}">职务: {{sourceInfo.position || '未填写'}}</text>
       </view>
-      
       <!-- 无数据时显示提示信息 -->
       <view class="empty-tip" wx:else>
         <text class="empty-text">暂无校友库源信息</text>
@@ -95,5 +93,22 @@
     <button class="reject-btn" bindtap="rejectMatch">非校友</button>
     <button class="middle-btn" bindtap="nonMatch">不确定</button>
     <button class="approve-btn" bindtap="approveMatch">是校友</button>
+  </view>
+</view>
+
+<!-- WXML结构 -->
+<view class="modal-layer" wx:if="{{showModal}}">
+  <view class="modal-mask" bindtap="closeModal"></view>
+  <view class="modal-content">
+    <view class="popup-header">
+      <text class="popup-title">审核完成！</text>
+      <text class="popup-subtitle">您已完成{{pendingCount}}条校友信息审核</text>
+    </view>
+    <view class="popup-content">
+      <text class="congrats-text">🎉 太棒了！全部审核任务已完成 🎉</text>
+    </view>
+    <view class="modal-footer">
+      <button class="modal-btn" bindtap="closeModal">确认</button>
+    </view>
   </view>
 </view>
