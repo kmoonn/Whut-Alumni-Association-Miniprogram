@@ -1,9 +1,10 @@
 {
-  "pages": [ 
+  "pages": [
     "pages/login/login",
     "pages/index/index",
     "pages/service/index",
-    "pages/my/index"
+    "pages/my/index",
+    "pages/my/invite/invite"
   ],
   "subPackages": [
     {
@@ -77,8 +78,10 @@
   "lazyCodeLoading": "requiredComponents",
   "permission": {
     "scope.userLocation": {
-        "desc": "你的位置信息将用于小程序定位"
+      "desc": "你的位置信息将用于小程序定位"
     }
   },
-  "requiredPrivateInfos": ["getLocation"]
+  "requiredPrivateInfos": [
+    "getLocation"
+  ]
 }
