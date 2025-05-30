@@ -1,0 +1,32 @@
+<view class="top-bar">
+  <text class="top-title">我的邀请</text>
+</view>
+
+<view class="container">
+  <view class="btn-wrapper">
+    <button class="gen-btn" bindtap="generateCode">+ 生成邀请码</button>
+  </view>
+
+  <view class="list-section">
+    <view class="title">邀请码</view>
+    <block wx:for="{{codeList}}" wx:for-item="code" wx:for-index="index" wx:key="index">
+      <view class="code-card">
+        <view class="code-row">
+          <text class="code-text">{{code}}</text>
+          <view class="action-group">
+            <text class="del-btn" bindtap="onDeleteTap" data-code="{{code}}">删除</text>
+            <text class="share-btn" bindtap="onShareTap" data-code="{{code}}">分享</text>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <view wx:if="{{showQr}}" class="qr-popup" bindtap="closeQr">
+  <view class="qr-modal" bindtap="stopPropagation">
+    <image class="qr-image" src="{{qrCodeUrl}}" mode="aspectFit" />
+    <text class="qr-tip">长按保存二维码为图片</text>
+    <text class="close-btn" bindtap="closeQr">关闭</text>
+  </view>
+</view>
+</view>

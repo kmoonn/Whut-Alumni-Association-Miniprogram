@@ -19,45 +19,45 @@
 
   <view class="form-item">
     <text class="label">姓名<text class="required">*</text></text>
-    <input class="input" placeholder="请输入姓名" bindinput="onInputChange" data-field="name" />
+    <input class="input" placeholder="请输入校友姓名" bindinput="onInputChange" data-field="name" />
   </view>
   <view class="form-item">
     <text class="label">所在地<text class="required">*</text></text>
     <picker mode="region" level="city" bindchange="onRegionChange">
-      <view class="picker">{{region || '请选择所在地'}}</view>
+      <view class="picker">{{region || '请选择校友所在地'}}</view>
     </picker>
   </view>
   <view class="form-item">
     <text class="label">工作单位<text class="required">*</text></text>
-    <input class="input" placeholder="请输入工作单位" bindinput="onInputChange" data-field="company" />
+    <input class="input" placeholder="请输入校友工作单位" bindinput="onInputChange" data-field="company" />
   </view>
   <view class="form-item">
     <text class="label">职务/职位<text class="required">*</text></text>
-    <input class="input" placeholder="请输入职务" bindinput="onInputChange" data-field="position" />
-  </view>
-  <view class="form-item">
-    <text class="label">学位</text>
-    <input class="input" placeholder="请输入学位等级" bindinput="onInputChange" data-field="department" />
+    <input class="input" placeholder="请输入校友职务" bindinput="onInputChange" data-field="position" />
   </view>
   <view class="form-item">
     <text class="label">毕业年份</text>
     <picker mode="date" fields="year" bindchange="onDateChange">
-      <view class="picker">{{graduation_year || '请选择毕业年份'}}</view>
+      <view class="picker">{{graduation_year || '请选择校友毕业年份'}}</view>
     </picker>
   </view>
   <view class="form-item">
-    <text class="label">毕业学院</text>
-    <input class="input" placeholder="请输入毕业学院" bindinput="onInputChange" data-field="department" />
+    <text class="label">学历</text>
+    <input class="input" placeholder="请输入校友学历" bindinput="onInputChange" data-field="education" />
   </view>
   
   <view class="form-item">
+    <text class="label">毕业学院</text>
+    <input class="input" placeholder="请输入校友毕业学院" bindinput="onInputChange" data-field="department" />
+  </view>
+  <view class="form-item">
     <text class="label">毕业专业<text class="required">*</text></text>
-    <input class="input" placeholder="请输入毕业专业" bindinput="onInputChange" data-field="major" />
+    <input class="input" placeholder="请输入校友毕业专业" bindinput="onInputChange" data-field="major" />
   </view>
 
   <view class="form-item">
     <text class="label">联系方式</text>
-    <input class="input" placeholder="请输入联系方式" bindinput="onInputChange" data-field="phone" />
+    <input class="input" placeholder="请输入校友联系方式" bindinput="onInputChange" data-field="phone" />
   </view>
 
   <block wx:for="{{category}}" wx:key="*this">
