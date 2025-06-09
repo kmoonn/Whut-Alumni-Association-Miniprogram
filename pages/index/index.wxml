@@ -10,7 +10,20 @@
   <swiper-item><image src="https://alumni.whut.edu.cn/upload/wxb/static/2022/11/11/d81e692648384eecba84630ec52f04f2.jpg" class="slide-image"></image></swiper-item>
   <swiper-item><image src="https://alumni.whut.edu.cn/upload/wxb/static/2022/11/11/e52b28b319a44a6e8a06198ad04a8cbc.jpg" class="slide-image"></image></swiper-item>
 </swiper>
-
+<view class="container">
+  <button bindtap="showModal">当前任务进度</button>
+  
+  <!-- 引入弹窗组件，这里给组件外层加个容器方便控制样式 -->
+  <view class="task-modal-container" wx:if="{{modalShow}}">
+    <task-modal 
+      showModal="{{modalShow}}" 
+      taskInfo="{{taskInfo}}"
+      bind:close="hideModal"
+      bind:goToTask="navigateToTask"
+      bind:handleTask="handleTaskAction"
+    ></task-modal>
+  </view>
+</view>
   <!-- 最新动态 -->
   <view class="section">
     <view class="section-header">
@@ -27,32 +40,50 @@
     </view>
   </view>
 
-  <!-- 活动信息 -->
-  <view class="section">
-    <view class="section-header">
-      <text class="section-title">近期活动</text>
+  
+<!-- taskModal.wxml -->
+<view class="task-modal" wx:if="{{modalShow}}">
+  <!-- 半透明遮罩层 -->
+  <view class="modal-mask" bindtap="closeModal"></view>
+  
+  <!-- 弹窗内容区 -->
+  <view class="modal-content animate-fade-in">
+    <!-- 标题区域 -->
+    <view class="modal-header">
+      <text class="title">{{taskInfo.title}}</text>
+      <image class="close-icon" src="/images/close.png" mode="aspectFit" bindtap="closeModal"></image>
     </view>
-    <view class="activity-list">
-      <view class="activity-item" wx:for="{{activities}}" wx:key="id" bindtap="navigateTo" data-url="/pages/activity/detail?id={{item.id}}">
-       
+    
+    <!-- 内容区域 - 任务列表 -->
+    <view class="modal-body">
+      <view class="task-list" wx:for="{{taskInfo.tasks}}" wx:key="id">
+        <view class="task-header">
+          <view class="task-name">{{item.name}}</view>
+          <button bindtap="goToTaskPage" data-id="{{item.id}}" data-page="{{item.targetPage}}" class="task-btn task-btn-inline">
+            查看详情
+          </button>
+        </view>
         
-
-        <view class="activity-time">
-          <text class="day">{{item.day}}</text>
-          <text class="month">{{item.month}}月</text>
-        </view>
-
-        <view class="news-item">
-          <image class="news-image" src="{{item.image}}" mode="aspectFill"></image>
-          <view class="text-wrapper">
-            <text class="activity-title">{{item.title}}</text>
+        <!-- 任务描述 -->
+        <view class="task-desc">{{item.desc}}</view>
+        
+        <!-- 进度条 -->
+        <view class="progress-container">
+          <view class="progress-bg">
+            <view class="progress-bar" style="width: {{item.progress}}%"></view>
           </view>
+          <text class="progress-text">{{item.progress}}%</text>
         </view>
-        <!-- <view class="activity-status {{item.status === '报名中' ? 'active' : ''}}">{{item.status}}</view> -->
       </view>
     </view>
+    
+    <!-- 按钮区域 -->
+    <view class="modal-footer">
+      <button bindtap="handleTaskBtn" class="primary-btn">{{taskInfo.btnText}}</button>
+    </view>
   </view>
-  
+</view>
+    
   <!-- 校友企业 -->
   <!-- <view class="section">
     <view class="section-header">

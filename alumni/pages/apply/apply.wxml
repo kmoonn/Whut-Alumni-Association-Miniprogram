@@ -1,10 +1,11 @@
 <view class="top-bar">
   <text class="title">重点校友推荐</text>
+  
 </view>
 <view class="header">
   <text class="title" style="font-size: medium;">信息填写</text>
 </view>
-
+<view class="count">推荐进度: {{applyCount}}/5</view>
 <view class="form">
   <view class="form-item">
     <text class="label">类别<text class="required">*</text></text>

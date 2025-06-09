@@ -2,8 +2,66 @@ Page({
   data: {
     newsList: [], // 新闻列表
     activities: [], // 活动列表
-    // companies: [] // 公司列表
+    modalShow: true,
+    taskInfo: {
+      title: '任务提醒',
+      btnText: '我已知晓',
+      tasks: [
+        {
+          id: 1,
+          name: '校友推荐 ',
+          desc: '推荐5名校友',
+          progress: 0,
+          targetPage: '/alumni/pages/apply/apply'
+        },
+        {
+          id: 2,
+          name: '校友审核',
+          desc: '审核100条待确认校友信息',
+          progress: 0,
+          targetPage: '/alumni/pages/check/dept/dept'
+        },
+      ]
+    }
   },
+  handleTaskBtn(){
+    this.setData({
+      modalShow: false
+    })
+  },
+
+  onShow() {
+    this.getTaskDetail();
+  },
+
+  // 弹窗按钮点击事件（跳转任务页面等）
+  goToTaskPage(e) {
+    const targetPage = e.currentTarget.dataset.page;
+    console.log('跳转目标页面:', targetPage);
+
+    this.setData({
+      modalShow: false
+    });
+    
+    // 执行页面跳转（使用微信小程序路由API）
+    if (targetPage) {
+      wx.navigateTo({
+        url: targetPage,
+        success: () => {
+          console.log('跳转成功');
+        },
+        fail: (err) => {
+          console.error('跳转失败:', err);
+        }
+      });
+    }
+  },
+
+  // 关闭弹窗（可选，给用户“我已知晓”按钮）
+  closeModal() {
+    this.setData({ taskModalShow: false });
+  },
+
 
   onLoad() {
     this.fetchData();
@@ -56,6 +114,58 @@ Page({
   navigateTo(e) {
     const { url } = e.currentTarget.dataset;
     wx.navigateTo({ url });
+  },
+
+  // 显示弹窗
+  showModal() {
+    this.getTaskDetail();
+    this.setData({
+      modalShow: true
+    });
+  },
+
+  // 隐藏弹窗
+  hideModal() {
+    this.setData({
+      modalShow: false
+    });
+  },
+
+  // 跳转到任务页面
+  navigateToTask(e) {
+    const { id, page } = e.detail;
+    console.log(`跳转到任务ID: ${id}，页面: ${page}`);
+    wx.navigateTo({
+      url: page + '?id=' + id
+    });
+  },
+
+  // 处理任务
+  handleTaskAction() {
+    console.log('开始处理任务...');
+    // 这里可以添加处理任务的逻辑
+    this.hideModal();
+  },
+
+  getTaskDetail () {
+    const reviewerId = wx.getStorageSync('userInfo').id;
+    wx.cloud.callFunction({
+      name: 'alumni',
+      data: {
+        action: 'catchTaskDetail',
+        reviewerId: reviewerId
+      }
+    }).then(res => {
+      if (res.result.code === 200) {
+        const { taskCount, applyCount } = res.result.data;
+        this.setData({
+          'taskInfo.tasks[0].progress': applyCount*100/5,
+          'taskInfo.tasks[1].progress':taskCount
+        });
+      }
+    }).catch(err => {
+      console.error('获取待确认数据失败', err);
+    });
   }
 });
 
@@ -146,17 +256,7 @@ function getActivities() {
           }
       });
   });
+
 }
 
-// // 模拟获取公司列表
-// function getCompanies() {
-//   return new Promise((resolve) => {
-//     setTimeout(() => {
-//       const companies = [
-//         { id: 1, name: '校友科技', industry: '', logo: 'https://636c-cloud1-6gsqyvkd3f24bdd8-1311119192.tcb.qcloud.la/images/default-avatar.jpg' },
-//         { id: 2, name: '校友金融', industry: '', logo: 'https://636c-cloud1-6gsqyvkd3f24bdd8-1311119192.tcb.qcloud.la/images/default-avatar.jpg' }
-//       ];
-//       resolve(companies);
-//     }, 1000);
-//   });
-// }
+

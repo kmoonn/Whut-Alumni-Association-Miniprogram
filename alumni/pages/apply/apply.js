@@ -8,6 +8,7 @@ Page({
         position: '',
         graduation_year: '',
         education: '',
+        department: '',
         major: '',
         phone: '',
         deeds: '',
@@ -15,11 +16,13 @@ Page({
 
         confirmBtn: { content: '我已知晓', variant: 'base' },
         dialogKey: '',
-        showMultiTextAndTitle: false
+        showMultiTextAndTitle: false,
+        applyCount:0
     },
 
     onShow: function () {
         this.setData({ showMultiTextAndTitle: true, dialogKey: 'showMultiTextAndTitle' });
+        this.getTaskDetail();
     },
 
 
@@ -64,7 +67,7 @@ Page({
     },
 
     validateForm() {
-        if (this.data.category.length === 0 || !this.data.name || !this.data.company || !this.data.region || !this.data.position || !this.data.education) {
+        if (this.data.category.length === 0 || !this.data.name || !this.data.company || !this.data.region || !this.data.position || !this.data.major) {
             wx.showToast({ title: '缺少必填项未填写！', icon: 'none' });
             return false;
         }
@@ -102,6 +105,7 @@ Page({
               position: this.data.position,
               graduation_year: this.data.graduation_year,
               education: this.data.education,
+              department: this.department,
               major: this.data.major,
               phone: this.data.phone,
               deeds: this.data.deeds,
@@ -125,5 +129,26 @@ Page({
               console.error('请求失败:', err);
           }
       });      
+    },
+
+    getTaskDetail () {
+      const reviewerId = wx.getStorageSync('userInfo').id;
+      wx.cloud.callFunction({
+        name: 'alumni',
+        data: {
+          action: 'catchTaskDetail',
+          reviewerId: reviewerId
+        }
+      }).then(res => {
+        if (res.result.code === 200) {
+          const { taskCount, applyCount } = res.result.data;
+          this.setData({
+            applyCount: applyCount,
+
+          });
+        }
+      }).catch(err => {
+        console.error('获取待确认数据失败', err);
+      });
     }
 });

@@ -123,6 +123,23 @@ checkbox .wx-checkbox-input {
   white-space: pre-line;
 }
 
-
-
-
+.count {
+  /* 基础样式 */
+  padding: 20rpx 0;
+  font-size: 28rpx;
+  color: #666;
+  
+  /* 水平居中（必选） */
+  text-align: center;
+  
+  /* 垂直居中（可选，根据容器高度决定） */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* 增强视觉效果的可选样式 */
+  background-color: #f8f8f8;
+  border-radius: 12rpx;
+  margin: 16rpx 0;
+  padding: 16rpx 0;
+}
