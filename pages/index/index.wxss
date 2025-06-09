@@ -341,10 +341,52 @@
   animation: fadeIn 0.3s ease forwards;
 }
 
+/* 悬浮按钮容器 */
+.floating-container {
+  position: fixed;
+  bottom: 50px; /* 距离底部距离 */
+  right: 20px; /* 距离右侧距离 */
+  z-index: 999; /* 确保在最上层 */
+}
+
+/* 悬浮按钮样式 */
+.floating-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #007AFF, #0051CB); /* 渐变背景 */
+  color: white;
+  width: 120px;
+  height: 40px;
+  border-radius: 20px; /* 圆形按钮 */
+  box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3); /* 阴影效果 */
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease; /* 过渡动画 */
+  
+  /* 点击效果 */
+  transform-origin: center;
+}
+
+/* 按钮悬停效果 */
+.floating-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 122, 255, 0.4);
+}
+
+/* 按钮点击动画 */
+.floating-btn:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3);
+}
+
+/* 文字样式 */
+.floating-text {
+  margin: 0 5px;
+}
 
 /* 
-
-
 .story-list {
   display: flex;
   flex-direction: column;

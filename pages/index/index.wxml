@@ -10,9 +10,12 @@
   <swiper-item><image src="https://alumni.whut.edu.cn/upload/wxb/static/2022/11/11/d81e692648384eecba84630ec52f04f2.jpg" class="slide-image"></image></swiper-item>
   <swiper-item><image src="https://alumni.whut.edu.cn/upload/wxb/static/2022/11/11/e52b28b319a44a6e8a06198ad04a8cbc.jpg" class="slide-image"></image></swiper-item>
 </swiper>
+<view class="floating-container">
+  <view class="floating-btn" bindtap="showModal">
+    <text class="floating-text">当前任务进度</text>
+  </view>
+</view>
 <view class="container">
-  <button bindtap="showModal">当前任务进度</button>
-  
   <!-- 引入弹窗组件，这里给组件外层加个容器方便控制样式 -->
   <view class="task-modal-container" wx:if="{{modalShow}}">
     <task-modal 
