@@ -10,8 +10,17 @@
   </view>
   <view class="city-picker" bindtap="showSelector">
     <view class="picker-content">
-      <text>{{selectedCity || '选择城市'}}</text>
-      <text class="iconfont icon-arrow-down"></text>
+      <view bindtap="showSelector">
+  <text>{{selectedCity || '选择城市'}}</text>
+</view>
+
+<city-selector
+  show="{{selectorVisible}}"
+  key="B4MBZ-4AAKG-YVYQY-QOKDS-TXVHV-Y5FPA"
+  referer="whut"
+  bindselect="onSelectCity"
+  hotCitys="北京,上海,广州,深圳,武汉"
+/>
     </view>
   </view>
 </view>
@@ -64,13 +73,4 @@
     </view>
   </scroll-view>
 </view>
-
-  <selector-component
-  show="{{selectorVisible}}"
-  key="B4MBZ-4AAKG-YVYQY-QOKDS-TXVHV-Y5FPA"
-  referer="whut"
-  bindselect="onSelectCity"
-  hotCitys="北京,上海,广州,深圳,武汉"
-></selector-component>
-
 </view>
