@@ -1,26 +1,18 @@
 const cloud = require('wx-server-sdk');
 const mysql = require('mysql2/promise');
-const config = require('config.js');
 
 cloud.init();
 
-let connection;
-
-// 创建数据库连接
-const createConnection = async () => {
-    if (!connection) {
-        connection = await mysql.createConnection(config.MYSQL);
-    }
-    return connection;
-};
-
-// 关闭数据库连接
-const closeConnection = async () => {
-    if (connection) {
-        await connection.end();
-        connection = null;
-    }
-};
+const pool = mysql.createPool({
+  host: '124.223.63.202',
+  user: 'wut815',
+  password: 'zdd.410@K39Y@sct.815',
+  database: 'whut_alumni_miniprogram',
+  port: 3306,
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0
+});
 
 // 统一错误处理函数
 const handleError = (message, error) => {
@@ -28,31 +20,38 @@ const handleError = (message, error) => {
     return { code: 500, message: '服务器错误，请稍后重试', error: error.message };
 };
 
-
 // 重点校友推荐
 const applyAlumni = async (event) => {
-    const { category, name, region, company, position, graduation_year, department, major, phone, deeds, userId } = event;
+    const { category, name, region, company, position, graduation_year, education, department, major, phone, deeds, userId } = event;
 
     try {
-        const conn = await createConnection();
+        const checkSql = `
+            SELECT id FROM famous_alumni 
+            WHERE name = ? AND company LIKE ?
+        `;
+        const [existing] = await pool.execute(checkSql, [name, `%${company}%`]);
+
+        if (existing.length > 0) {
+            return { code: 400, message: '该校友已在库，无法推荐' };
+        }
 
         // 插入主表数据
         const sql = `
             INSERT INTO applied_alumni (
                 category, name, region, company, position,
-                graduation_year, department, major, phone, deeds
+                graduation_year, education, department, major, phone, deeds
             ) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         `;
         const values = [
             category.join(','), name, region || null, company || null, position || null,
-            graduation_year || null, department || null, major || null, phone || null, deeds || null
+            graduation_year || null, education || null, department || null, major || null, phone || null, deeds || null
         ];
 
-        const [result] = await conn.execute(sql, values);
+        const [result] = await pool.execute(sql, values);
 
         // 插入关联记录
-        await conn.execute(
+        await pool.execute(
             `INSERT INTO apply_note(user_id, alum_id) VALUES (?, ?)`,
             [userId, result.insertId]
         );
@@ -60,8 +59,6 @@ const applyAlumni = async (event) => {
         return { code: 200, message: '提交成功', data: { id: result.insertId } };
     } catch (error) {
         return handleError('提交失败', error);
-    } finally {
-        await closeConnection();
     }
 };
 
@@ -77,15 +74,13 @@ const getPendingMatches = async (event) => {
     const buildDepartmentCondition = (departments, reviewerId) => {
         const OTHER_LABEL = '其他';
         const hasOther = departments.includes(OTHER_LABEL);
-        const realDepartments = departments.filter(d => d !== OTHER_LABEL);
-
         let whereClause = `p.status = '待确认' AND (`;
         const conditions = [];
         const queryParams = [];
 
-        if (realDepartments.length > 0) {
-            conditions.push(`p.department IN (${realDepartments.map(() => '?').join(',')})`);
-            queryParams.push(...realDepartments);
+        if (departments.length > 0) {
+            conditions.push(`p.department IN (${departments.map(() => '?').join(',')})`);
+            queryParams.push(...departments);
         }
 
         if (hasOther) {
@@ -99,16 +94,17 @@ const getPendingMatches = async (event) => {
             )`;
 
         queryParams.push(reviewerId);
-
         return { whereClause, queryParams };
     };
-
     try {
-        const conn = await createConnection();
         const { whereClause, queryParams } = buildDepartmentCondition(departments, reviewerId);
-
-        // 获取待审核总数
-        const [countRows] = await conn.execute(
+        const [reviewedResult] = await pool.execute(`
+            SELECT COUNT(r.alum_id) AS reviewedCount
+            FROM review_note r
+            WHERE r.user_id = ?   -- 筛选当前用户的审核记录
+        `, [reviewerId]);  // 传递reviewerId作为参数
+        const pendingCount = reviewedResult[0].reviewedCount || 0;
+        const [countRows] = await pool.execute(
             `SELECT COUNT(*) as total 
              FROM pending_alumni p
              WHERE ${whereClause}`,
@@ -116,7 +112,7 @@ const getPendingMatches = async (event) => {
         );
 
         // 获取一条待审核校友信息
-        const [rows] = await conn.execute(
+        const [rows] = await pool.execute(
             `
             SELECT
                 p.id AS pending_id, 
@@ -162,7 +158,6 @@ const getPendingMatches = async (event) => {
         }
 
         const row = rows[0];
-
         const pendingAlumni = {
             id: row.pending_id,
             name: row.pending_name,
@@ -200,7 +195,7 @@ const getPendingMatches = async (event) => {
             data: {
                 sourceAlumni,
                 pendingAlumni,
-                pendingCount: countRows[0].total
+                pendingCount: pendingCount
             }
         };
     } catch (error) {
@@ -210,8 +205,6 @@ const getPendingMatches = async (event) => {
             message: '获取待审核数据失败',
             error: error.message
         };
-    } finally {
-        await closeConnection();
     }
 };
 
@@ -219,12 +212,9 @@ const getPendingMatches = async (event) => {
 // 提交审核结果
 const submitReviewResult = async (event) => {
     const { alum_id, reviewerId, result, remark } = event;
-
     try {
-        const conn = await createConnection();
-
         // 添加审核记录
-        const [updateResult] = await conn.execute(`
+        const [updateResult] = await pool.execute(`
             INSERT INTO review_note(alum_id, user_id, result, remark)
             VALUES (?, ?, ?, ?)
         `, [alum_id, reviewerId, result, remark]);
@@ -236,9 +226,45 @@ const submitReviewResult = async (event) => {
         return { code: 200, message: '审核完成' };
     } catch (error) {
         return handleError('审核提交失败', error);
-    } finally {
-        await closeConnection();
     }
+};
+
+// 获取任务完成情况
+const catchTaskDetail = async (event) => {
+    // 参数校验
+    if (!event || !event.reviewerId) {
+        return {
+            code: 400,
+            message: '缺少必要参数: user_id'
+        };
+    }
+    
+    const { reviewerId } = event;
+    
+    try {
+        // 并行查询两个表的统计数据
+        const [reviewResults, applyResults] = await Promise.all([
+            pool.execute('SELECT COUNT(*) as taskCount FROM review_note WHERE user_id = ?', [reviewerId]),
+            pool.execute('SELECT COUNT(*) as applyCount FROM apply_note WHERE user_id = ?', [reviewerId])
+        ]);
+        
+        // 提取统计结果
+        const taskCount = reviewResults[0][0]?.taskCount || 0;
+        const applyCount = applyResults[0][0]?.applyCount || 0;
+
+        return { 
+            code: 200, 
+            message: '查询完成', 
+            data: { taskCount, applyCount } 
+        };
+    } catch (error) {
+        console.error('查询任务完成详情失败', error);
+        return {
+            code: 500,
+            message: '服务器内部错误',
+            error: error.message
+        };
+    } 
 };
 
 exports.main = async (event, context) => {
@@ -249,6 +275,8 @@ exports.main = async (event, context) => {
             return await getPendingMatches(event);
         case 'submitReviewResult':
             return await submitReviewResult(event);
+        case 'catchTaskDetail':
+            return await catchTaskDetail(event);
         default:
             return { code: 400, message: '无效的操作' };
     }

@@ -1,30 +1,28 @@
 .top-bar {
   display: flex;
-  padding: 15px 15px;
+  justify-content: center;
+  align-items: center;
+  padding: 30rpx;
   background: linear-gradient(to right, #0056b3, #007bff);
   color: white;
   font-size: 40rpx;
   font-weight: bold;
-}
-
-.logo {
-  width: 250px;
-  height: 50px;
-  margin-right: 40px;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.15);
+  border-bottom-left-radius: 20rpx;
+  border-bottom-right-radius: 20rpx;
 }
 
 .top-title {
-  font-size: 18px;
+  font-size: 36rpx;
   font-weight: bold;
-  margin-top: 10px;
 }
 
 
 /* 用户信息卡片 */
 .user-card {
   background: #ffffff;
-  padding: 40rpx 30rpx;
-  margin-bottom: 20rpx;
+  padding: 10rpx 30rpx;
+  margin-bottom: 0rpx;
   width: 100%;
 }
 

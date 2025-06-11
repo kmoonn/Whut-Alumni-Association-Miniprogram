@@ -1,6 +1,6 @@
 <view class="login-container">
   <view class="logo-container">
-    <image class="logo" src="https://alumni.whut.edu.cn/xyh/d5695da9-0e35-45de-b232-d886065efaa3/static/home-new/school-logo-blue.png" mode="widthFix"></image>
+    <image class="logo" src="https://636c-cloud1-9gmxebo9bcb28c86-1363518935.tcb.qcloud.la/assets/logo.png" mode="widthFix"></image>
   </view>
 
   <view class="login-card">
@@ -35,8 +35,8 @@
       <button class="submit-btn" bindtap="onLogin" hover-class="button-hover">登录</button>
       <t-dialog visible="{{showMultiTextAndTitle}}" title="用户服务协议" confirm-btn="{{ confirmBtn }}" bind:confirm="closeDialog">
         <scroll-view slot="content" type="list" scroll-y class="long-content">
-          <view class="content-container">1.服务说明：本小程序为武汉理工大学校友提供信息服务、活动参与、资源共享等功能；
-            2.用户资格：用户必须是武汉理工大学在校生或毕业校友、不得冒用他人身份；
+          <view class="content-container">1.服务说明：本小程序为广大校友提供信息服务、活动参与、资源共享等功能；
+            2.用户资格：用户必须是高校在校生或毕业校友、不得冒用他人身份；
             3.用户义务：遵守法律法规、维护学校声誉、保护账号安全；
             4.隐私保护：依法保护个人信息、未经同意不向第三方披露；
             5.信息发布：信息需真实合法、不得发布违规内容、维护良好社区氛围；

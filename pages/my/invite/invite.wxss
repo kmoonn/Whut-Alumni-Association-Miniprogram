@@ -117,54 +117,52 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.4);
-  z-index: 999;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6); /* 半透明黑色背景 */
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  z-index: 999;
 }
 
-/* 弹窗卡片容器 */
+/* 弹窗内容容器 */
 .qr-modal {
-  background-color: #fff;
+  background: #fff;
+  border-radius: 16rpx;
   padding: 40rpx 30rpx;
-  border-radius: 20rpx;
-  width: 560rpx;
-  box-shadow: 0 10rpx 40rpx rgba(0, 0, 0, 0.2);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  box-shadow: 0 8rpx 30rpx rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 500rpx;
+  max-width: 90%;
 }
 
 /* 二维码图片 */
 .qr-image {
   width: 300rpx;
-  height: 300rpx;
+  height: 500rpx;
   margin-bottom: 30rpx;
   border-radius: 8rpx;
 }
 
-/* 提示文案（可选） */
+/* 提示文字 */
 .qr-tip {
-  font-size: 26rpx;
-  color: #666;
+  display: block;
+  color: #888;
+  font-size: 24rpx;
   margin-bottom: 20rpx;
-  text-align: center;
 }
 
 /* 关闭按钮 */
 .close-btn {
+  display: inline-block;
   margin-top: 10rpx;
-  padding: 12rpx 40rpx;
+  color: #007aff;
   font-size: 28rpx;
-  color: #409EFF;
-  background-color: #f0f7ff;
-  border-radius: 10rpx;
-  border: 1rpx solid #cde0ff;
+  padding: 10rpx 20rpx;
+  border-radius: 8rpx;
+  border: 1rpx solid #007aff;
 }
-
 
 
 

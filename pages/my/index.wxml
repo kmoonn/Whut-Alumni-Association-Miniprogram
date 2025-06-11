@@ -1,12 +1,10 @@
-<!-- 顶部校友会导航栏 -->
 <view class="top-bar">
-  <image src="https://636c-cloud1-6gsqyvkd3f24bdd8-1311119192.tcb.qcloud.la/images/logo.png" class="logo"></image>
-  <text class="top-title">我的</text>
+  <text class="top-title">我的主页</text>
 </view>
   <!-- 用户信息卡片 -->
   <view class="user-card">
     <view class="user-info">
-      <image class="avatar" src="{{userInfo.avatarUrl || 'https://636c-cloud1-6gsqyvkd3f24bdd8-1311119192.tcb.qcloud.la/images/default-avatar.jpg'}}" mode="aspectFill"></image>
+      <image class="avatar" src="{{userInfo.avatarUrl}}" mode="aspectFill"></image>
       <view class="info">
         <text class="nickname">{{userInfo.nickname || '未登录'}}</text>
       </view>
@@ -92,6 +90,6 @@
 
   <!-- 版权声明 -->
 <view class="footer">
-  <text class="copyright">© 2025 武汉理工大学校友会</text>
-  <text class="support">技术支持：计算机智能学院 AI 安全团队</text>
+  <text class="copyright">© 2025 武汉市冬熵科技有限责公司</text>
+  <text class="support">技术支持：19522951401</text>
 </view>

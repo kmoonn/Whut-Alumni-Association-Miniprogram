@@ -1,18 +1,19 @@
 const cloud = require('wx-server-sdk');
 const mysql = require('mysql2/promise');
 const bcrypt = require('bcryptjs');
-const config = require('config.js');
 
 cloud.init();
 
-let connection;
-
-const createConnection = async () => {
-    if (!connection) {
-        connection = await mysql.createConnection(config.MYSQL);
-    }
-    return connection;
-};
+const pool = mysql.createPool({
+  host: '124.223.63.202',
+  user: 'wut815',
+  password: 'zdd.410@K39Y@sct.815',
+  database: 'whut_alumni_miniprogram',
+  port: 3306,
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0
+});
 
 const handleError = (message, error) => {
     console.error(message, error);
@@ -36,8 +37,8 @@ const login = async (event) => {
     if (!validation.success) return validation;
 
     try {
-        const conn = await createConnection();
-        const [rows] = await conn.execute(
+        
+        const [rows] = await pool.execute(
             'SELECT id, nickname, username, password, role, isInitialPassword FROM users WHERE username = ?',
             [username]
         );
@@ -75,8 +76,8 @@ const register = async (event) => {
     if (!validation.success) return validation;
 
     try {
-        const conn = await createConnection();
-        const [rows] = await conn.execute(
+        
+        const [rows] = await pool.execute(
             'SELECT * FROM users WHERE username = ?',
             [username]
         );
@@ -86,7 +87,7 @@ const register = async (event) => {
         }
 
         const hashPassword = bcrypt.hashSync(password, 10);
-        const [result] = await conn.execute(
+        const [result] = await pool.execute(
             'INSERT INTO users (nickname, username, password) VALUES (?, ?, ?)',
             [nickname, username, hashPassword]
         );
@@ -109,10 +110,10 @@ const changePassword = async (event) => {
     if (!validation.success) return validation;
 
     try {
-        const conn = await createConnection();
+        
         const hashPassword = bcrypt.hashSync(newPassword, 10);
 
-        const [result] = await conn.execute(
+        const [result] = await pool.execute(
             'UPDATE users SET password = ?, isInitialPassword = 0 WHERE id = ?',
             [hashPassword, userId]
         );
@@ -138,4 +139,4 @@ exports.main = async (event) => {
         default:
             return { success: false, message: '无效的操作' };
     }
-};
+}

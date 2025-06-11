@@ -69,23 +69,25 @@
 </view>
 
 
-<!-- <view class="source-info" wx:if="{{!noMoreData}}">
-  <text class="label">疑似校友信息来源：</text>
-  <navigator 
-    url="/alumni/pages/check/source/source?url={{pendingInfo.source}}" 
-    class="link">
-    <t-link size="small" theme="primary" content="跳转链接" prefixIcon="link" hover />
-  </navigator>
-</view> -->
-
 <view class="source-info" wx:if="{{!noMoreData}}">
   <text class="label">疑似校友信息来源：</text>
-  <view class="link" bindtap="copyLink">
-    <t-link size="small" theme="primary" content="点击复制链接，在浏览器中打开" prefixIcon="link" hover />
-  </view>
+  <navigator 
+    url="/alumni/pages/check/source/source?url={{encodeURIComponent(pendingInfo.source)}}" 
+    class="link"
+  >
+    <t-link size="small" theme="primary" content="跳转链接" prefixIcon="link" hover />
+  </navigator>
+
+  <t-link 
+    size="small" 
+    theme="primary" 
+    content="复制链接" 
+    prefixIcon="copy" 
+    hover 
+    bindtap="copyLink"
+    style="margin-left: 10px;"
+  />
 </view>
-
-
 
 <view class="action-area" wx:if="{{!noMoreData}}">
   <view class="action-title">提交结果</view>

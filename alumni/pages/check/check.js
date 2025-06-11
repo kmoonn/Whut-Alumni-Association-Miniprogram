@@ -11,7 +11,7 @@ Page({
     confirmBtn: { content: '我已知晓', variant: 'base' },
     dialogKey: '',
     showMultiTextAndTitle: false,
-    showModal: true
+    showModal: false
   },
   
   onLoad: function(options) {
@@ -20,6 +20,7 @@ Page({
       departments: departments
     });
     this.fetchPendingMatches();
+    this.checkReviewStatus();
   },
 
   showError(message) {
@@ -30,12 +31,10 @@ Page({
   },
 
   formatDate(date) {
-    //const d = new Date(date);
     const year = date.substr(0, 4);
     const month = date.substr(5, 2).padStart(2, '0');
     const day = date.substr(8, 2).padStart(2, '0');
     return `${year}-${month}-${day}`;
-    //return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
   },
 
   showAgreement(callback) {
@@ -80,6 +79,7 @@ Page({
           pendingCount: pendingCount,
           noMoreData: false
         });
+        this.checkReviewStatus();
       } else {
         this.showError(res.result.message || '获取数据失败');
         this.setData({
@@ -90,7 +90,6 @@ Page({
           icon: 'none',
           duration: 1500
         });
-
       }
     }).catch(err => {
       console.error('获取待确认数据失败', err);
@@ -200,11 +199,13 @@ Page({
   },
 
   checkReviewStatus() {
-  setTimeout(() => {
-    this.setData({
-      showModal: true
-    });
-  }, 1000);
+    if (this.data.pendingCount >= 100) {
+      setTimeout(() => {
+        this.setData({
+          showModal: true
+        });
+      }, 1000);
+    }
 },
 
 closeModal() {

@@ -9,7 +9,7 @@
 
 <!-- 主内容区 -->
 <view wx:if="{{!showSidebar}}" class="main-content">
-  <scroll-view scroll-y class="alumni-list">
+  <scroll-view enable-flex scroll-y class="alumni-list">
     <view class="alumni-item" wx:for="{{alumniList}}" wx:key="id" bindtap="showDetail" data-id="{{item.id}}">
       <!-- <image class="avatar" src="{{item.avatar || '{{imageBaseUrl}}default-avatar.png?sign=c74ca9bb99d2709acf594a94cb26717a&t=1742101187'}}" mode="aspectFill"></image> -->
       <view class="info">

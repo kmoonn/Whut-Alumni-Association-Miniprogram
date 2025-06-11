@@ -21,11 +21,10 @@
       </view>
     </block>
   </view>
-
   <view wx:if="{{showQr}}" class="qr-popup" bindtap="closeQr">
-  <view class="qr-modal" bindtap="stopPropagation">
-    <image class="qr-image" src="{{qrCodeUrl}}" mode="aspectFit" />
-    <text class="qr-tip">长按保存二维码为图片</text>
+  <view class="qr-modal" catchtap="stopPropagation">
+    <image class="qr-image" src="{{qrCodeUrl}}" mode="widthFix" />
+    <text class="qr-tip">长按保存为图片</text>
     <text class="close-btn" bindtap="closeQr">关闭</text>
   </view>
 </view>

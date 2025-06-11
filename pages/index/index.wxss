@@ -1,22 +1,20 @@
 .top-bar {
   display: flex;
-  padding: 15px 15px;
+  justify-content: center;
+  align-items: center;
+  padding: 20rpx;
   background: linear-gradient(to right, #0056b3, #007bff);
   color: white;
   font-size: 40rpx;
   font-weight: bold;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.15);
+  border-bottom-left-radius: 20rpx;
+  border-bottom-right-radius: 20rpx;
 }
 
-.logo {
-  width: 250px;
-  height: 50px;
-  margin-right: 40px;
-}
-
-.title {
-  font-size: 18px;
+.top-title {
+  font-size: 36rpx;
   font-weight: bold;
-  margin-top: 10px;
 }
 
 .swiper {
@@ -289,7 +287,7 @@
 /* 按钮样式 */
 .task-btn {
   display: flex;
-  margin-top: 20rpx;
+  margin-top: 5rpx;
   padding: 1rpx 0;
   width: fit-content;
   font-size: 15rpx;
@@ -308,7 +306,7 @@
 
 .primary-btn, .cancel-btn {
   flex: 1;
-  padding: 24rpx 0;
+  padding: 2rpx 0;
   font-size: 28rpx;
   border-radius: 8rpx;
 }

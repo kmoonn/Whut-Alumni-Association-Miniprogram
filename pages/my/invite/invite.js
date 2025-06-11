@@ -58,33 +58,35 @@ Page({
 
   onShareTap(e) {
     const code = e.currentTarget.dataset.code;
-    const shareUrl = `https://yourdomain.com/?code=${code}`; // 替换为你的域名
-
     wx.cloud.callFunction({
       name: 'service',
       data: {
         action: 'genQRcode',
-        url: shareUrl 
+        code: code
       },
       success: res => {
-        const fileID = res.result.fileID;
+        const fileID = res.result && res.result.fileID;
         if (!fileID) {
           wx.hideLoading();
           wx.showToast({ title: '二维码生成失败', icon: 'none' });
           return;
         }
-
+    
+        // 获取临时访问链接
         wx.cloud.getTempFileURL({
           fileList: [fileID],
           success: r => {
-            const tempUrl = r.fileList[0].tempFileURL;
-
-            console.log(tempUrl)
-
+            const tempFile = r.fileList && r.fileList[0];
+            if (!tempFile || !tempFile.tempFileURL) {
+              wx.hideLoading();
+              wx.showToast({ title: '获取二维码失败', icon: 'none' });
+              return;
+            }
+            console.log('[二维码 URL]', tempFile.tempFileURL);
             this.setData({
-              qrCodeUrl: tempUrl,
+              qrCodeUrl: tempFile.tempFileURL,
               showQr: true
-            });            
+            });
           },
           fail: () => {
             wx.hideLoading();
@@ -92,11 +94,12 @@ Page({
           }
         });
       },
-      fail: () => {
+      fail: err => {
         wx.hideLoading();
+        console.error('云函数调用失败:', err);
         wx.showToast({ title: '二维码生成失败', icon: 'none' });
       }
-    });
+    });    
   },
 
   onDeleteTap(e) {
@@ -131,5 +134,9 @@ Page({
       showQr: false,
       qrCodeUrl: ''
     });
+  },
+
+  stopPropagation() {
   }
+
 });

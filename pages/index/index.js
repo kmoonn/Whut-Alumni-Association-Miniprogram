@@ -10,14 +10,14 @@ Page({
         {
           id: 1,
           name: '校友推荐 ',
-          desc: '推荐5名校友',
+          desc: '推荐 5 名有效重点校友信息',
           progress: 0,
           targetPage: '/alumni/pages/apply/apply'
         },
         {
           id: 2,
-          name: '校友审核',
-          desc: '审核100条待确认校友信息',
+          name: '校友确认',
+          desc: '确认 100 条待确认校友信息',
           progress: 0,
           targetPage: '/alumni/pages/check/dept/dept'
         },
@@ -34,16 +34,12 @@ Page({
     this.getTaskDetail();
   },
 
-  // 弹窗按钮点击事件（跳转任务页面等）
   goToTaskPage(e) {
     const targetPage = e.currentTarget.dataset.page;
-    console.log('跳转目标页面:', targetPage);
-
     this.setData({
       modalShow: false
     });
     
-    // 执行页面跳转（使用微信小程序路由API）
     if (targetPage) {
       wx.navigateTo({
         url: targetPage,
@@ -57,11 +53,9 @@ Page({
     }
   },
 
-  // 关闭弹窗（可选，给用户“我已知晓”按钮）
   closeModal() {
     this.setData({ taskModalShow: false });
   },
-
 
   onLoad() {
     this.fetchData();
@@ -98,10 +92,7 @@ Page({
       newsList: latestNewsList,
       activities: latestActivities,
     });
-  
-      console.log('获取数据成功：', { newsList, activities });
     } catch (error) {
-      console.error('获取首页数据失败：', error);
       wx.showToast({
         title: '获取数据失败',
         icon: 'none'

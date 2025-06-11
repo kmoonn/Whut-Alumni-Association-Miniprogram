@@ -1,5 +1,5 @@
 <view class="top-bar">
-  <text class="title">校友服务</text>
+  <text class="top-title">校友服务</text>
 </view>
 
 <view class="container">
