@@ -71,7 +71,7 @@ Page({
             id: company.id,
             latitude: company.lat,
             longitude: company.lng,
-            iconPath: this.data.imageBaseUrl+'公司.png',
+            iconPath: this.data.imageBaseUrl+'%E5%85%AC%E5%8F%B8.png?sign=923f7a43ecd0482006466de99a4a793c&t=1760937731',
             width: 30,
             height: 30
           }));

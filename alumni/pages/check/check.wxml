@@ -5,7 +5,7 @@
 <view class="header" wx:if="{{!noMoreData}}">
   <view class="count">审核进度: {{pendingCount}}/100</view>
   <image 
-    src="https://636c-cloud1-6gsqyvkd3f24bdd8-1311119192.tcb.qcloud.la/images/question.png?sign=caef24fbf3219578a258e3c0a44459c2&t=1747449324" 
+    src="https://636c-cloud1-9gmxebo9bcb28c86-1363518935.tcb.qcloud.la/images/question.png?sign=bb80c3e235d7ac591ee3378d22f59b52&t=1760936475" 
     class="question-icon" 
     bindtap="toggleTooltip"
   />

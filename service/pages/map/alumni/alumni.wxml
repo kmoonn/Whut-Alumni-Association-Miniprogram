@@ -10,7 +10,7 @@
   <block wx:for="{{alumniList}}" wx:key="id">
     <view class="alumni-card" bindtap="showDetail" data-id="{{item.id}}">
       <view class="alumni-info">
-        <t-avatar image="{{imageBaseUrl}}%E6%A0%A1%E5%8F%8B%E5%A4%B4%E5%83%8F.png" size="large" />
+        <t-avatar image="{{imageBaseUrl}}alumni.png" size="large" />
         <view class="alumni-text">
           <view class="name">{{item.name}}</view>
           <view class="position">{{item.position}}</view>

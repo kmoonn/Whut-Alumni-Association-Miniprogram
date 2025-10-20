@@ -4,7 +4,7 @@
   <!-- 用户信息卡片 -->
   <view class="user-card">
     <view class="user-info">
-      <image class="avatar" src="{{userInfo.avatarUrl}}" mode="aspectFill"></image>
+      <image class="avatar" src="https://636c-cloud1-9gmxebo9bcb28c86-1363518935.tcb.qcloud.la/images/avatar.png?sign=d18bf6df8509de1d491b43732307f0c0&t=1760937462" mode="aspectFill"></image>
       <view class="info">
         <text class="nickname">{{userInfo.nickname || '未登录'}}</text>
       </view>
@@ -15,7 +15,7 @@
   <view class="menu-list">
     <view class="menu-group">
       <view class="menu-item" bindtap="navigateTo" data-url="/pages/my/invite/invite">
-        <image class="icon" src="https://636c-cloud1-6gsqyvkd3f24bdd8-1311119192.tcb.qcloud.la/images/icon-profile.png" mode="aspectFit"></image>
+        <image class="icon" src="https://636c-cloud1-9gmxebo9bcb28c86-1363518935.tcb.qcloud.la/images/profile.png?sign=750d82025b0450fa9d25ba3c257f3a5d&t=1760936699" mode="aspectFit"></image>
         <text class="title">我的邀请</text>
         <text class="arrow"></text>
       </view>
@@ -42,7 +42,7 @@
         <text class="arrow"></text>
       </view> -->
       <view class="menu-item" bindtap="contactService">
-  <image class="icon" src="https://636c-cloud1-6gsqyvkd3f24bdd8-1311119192.tcb.qcloud.la/images/icon-service.png" mode="aspectFit"></image>
+  <image class="icon" src="https://636c-cloud1-9gmxebo9bcb28c86-1363518935.tcb.qcloud.la/images/contact.png?sign=98ba8786e92a49524ba498d3574e2f5e&t=1760936799" mode="aspectFit"></image>
   <text class="title">联系我们</text>
   <text class="arrow"></text>
 </view>
@@ -76,12 +76,12 @@
   </view>
 </view>
       <view class="menu-item" bindtap="navigateTo" data-url="/pages/my/about">
-        <image class="icon" src="https://636c-cloud1-6gsqyvkd3f24bdd8-1311119192.tcb.qcloud.la/images/icon-about.png" mode="aspectFit"></image>
+        <image class="icon" src="https://636c-cloud1-9gmxebo9bcb28c86-1363518935.tcb.qcloud.la/images/about.png?sign=9226bed6956eba74693ddb1522032c76&t=1760936908" mode="aspectFit"></image>
         <text class="title">关于我们</text>
         <text class="arrow"></text>
       </view>
       <view class="menu-item" bindtap="logout">
-        <image class="icon" src="https://636c-cloud1-6gsqyvkd3f24bdd8-1311119192.tcb.qcloud.la/images/%E9%80%80%E5%87%BA%E7%99%BB%E5%BD%95.png?sign=be902f50d743524063f67d0401c23ca4&t=1742105813" mode="aspectFit"></image>
+        <image class="icon" src="https://636c-cloud1-9gmxebo9bcb28c86-1363518935.tcb.qcloud.la/images/logout.png?sign=441caf4578be6b5b142bfd6b98dd74c7&t=1760936978" mode="aspectFit"></image>
         <text class="title">退出登录</text>
         <text class="arrow"></text>
       </view>

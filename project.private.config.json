@@ -6,7 +6,19 @@
     "urlCheck": false,
     "skylineRenderEnable": true,
     "bigPackageSizeSupport": true,
-    "preloadBackgroundData": false
+    "preloadBackgroundData": false,
+    "coverView": true,
+    "lazyloadPlaceholderEnable": false,
+    "autoAudits": false,
+    "useApiHook": true,
+    "useApiHostProcess": true,
+    "showShadowRootInWxmlPanel": true,
+    "useStaticServer": false,
+    "useLanDebug": false,
+    "showES6CompileOption": false,
+    "checkInvalidKey": true,
+    "ignoreDevUnusedFiles": true
   },
-  "libVersion": "3.8.7"
+  "libVersion": "3.10.3",
+  "condition": {}
 }

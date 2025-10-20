@@ -6,8 +6,6 @@ App({
     });
     },
     globalData: {
-      imageBaseUrl: 'https://636c-cloud1-6gsqyvkd3f24bdd8-1311119192.tcb.qcloud.la/images/'
+      imageBaseUrl: 'https://636c-cloud1-9gmxebo9bcb28c86-1363518935.tcb.qcloud.la/images/'
     }
 });
-
-
