@@ -90,6 +90,5 @@
 
   <!-- 版权声明 -->
 <view class="footer">
-  <text class="copyright">© 2025 武汉市冬熵科技有限责公司</text>
-  <text class="support">技术支持：19522951401</text>
+  <text class="copyright">© 2025 武汉市冬熵科技有限责任公司</text>
 </view>
