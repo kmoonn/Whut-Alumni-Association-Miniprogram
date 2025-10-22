@@ -81,7 +81,7 @@ Page({
     const sortedNewsList = newsList.sort((a, b) => {
       return new Date(b.date) - new Date(a.date);
     });
-    const latestNewsList = sortedNewsList.slice(0, 3);
+    const latestNewsList = sortedNewsList.slice(0, 5);
 
     // 处理活动列表，只保留最新的两条
     const sortedActivities = activities.sort((a, b) => {

@@ -4,9 +4,11 @@
 
 <!-- 轮播图 -->
 <swiper class="swiper" autoplay="true" interval="3000" duration="500">
-  <swiper-item><image src="https://alumni.whut.edu.cn/upload/wxb/static/2022/11/11/6c979d31f1c241f9bafaf5e451f4cf48.png" class="slide-image"></image></swiper-item>
-  <!-- <swiper-item><image src="https://alumni.whut.edu.cn/upload/wxb/static/2022/11/11/d81e692648384eecba84630ec52f04f2.jpg" class="slide-image"></image></swiper-item> -->
-  <swiper-item><image src="https://alumni.whut.edu.cn/upload/wxb/static/2022/11/11/e52b28b319a44a6e8a06198ad04a8cbc.jpg" class="slide-image"></image></swiper-item>
+  <swiper-item><image src="https://news.whut.edu.cn/zhxw/202510/W020251018622847940979.jpg" class="slide-image"></image></swiper-item>
+  <swiper-item><image src="https://alumni.whut.edu.cn/upload/wxb/static/2025/10/22/aeecce1dfd5041498dd7d4bcf697df8c.png" class="slide-image"></image></swiper-item>
+  <swiper-item><image src="https://news.whut.edu.cn/zhxw/202510/W020251014358225114962.jpg" class="slide-image"></image></swiper-item>
+  <swiper-item><image src="https://alumni.whut.edu.cn/upload/wxb/static/2025/10/22/76f58f3b46bc4daba4060a124cc50f3e.png" class="slide-image"></image></swiper-item>
+  
 </swiper>
 <view class="floating-container">
   <view class="floating-btn" bindtap="showModal">

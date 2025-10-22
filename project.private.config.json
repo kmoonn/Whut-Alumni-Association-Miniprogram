@@ -3,7 +3,7 @@
   "projectname": "Whut-Alumni-Association-Miniprogram",
   "setting": {
     "compileHotReLoad": true,
-    "urlCheck": false,
+    "urlCheck": true,
     "skylineRenderEnable": true,
     "bigPackageSizeSupport": true,
     "preloadBackgroundData": false,

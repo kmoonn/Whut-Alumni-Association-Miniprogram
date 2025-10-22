@@ -71,23 +71,20 @@
 
 <view class="source-info" wx:if="{{!noMoreData}}">
   <text class="label">疑似校友信息来源：</text>
-  <navigator 
-    url="/alumni/pages/check/source/source?url={{encodeURIComponent(pendingInfo.source)}}" 
-    class="link"
-  >
-    <t-link size="small" theme="primary" content="跳转链接" prefixIcon="link" hover />
-  </navigator>
-
   <t-link 
     size="small" 
     theme="primary" 
-    content="复制链接" 
+    content="点击这里复制链接" 
     prefixIcon="copy" 
     hover 
     bindtap="copyLink"
     style="margin-left: 10px;"
   />
 </view>
+
+<span class="tips">
+    （因微信安全机制限制自动跳转，请复制链接到浏览器查看）
+  </span>
 
 <view class="action-area" wx:if="{{!noMoreData}}">
   <view class="action-title">提交结果</view>
@@ -98,7 +95,6 @@
   </view>
 </view>
 
-<!-- WXML结构 -->
 <view class="modal-layer" wx:if="{{showModal}}">
   <view class="modal-mask" bindtap="closeModal"></view>
   <view class="modal-content">

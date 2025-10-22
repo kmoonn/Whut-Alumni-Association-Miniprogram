@@ -141,11 +141,11 @@
 .source-info {
   display: flex;
   align-items: center;
-  padding: 20rpx 32rpx;
+  padding: 10rpx 120rpx;
 }
 
 .label {
-  font-size: 28rpx;
+  font-size: 30rpx;
   color: #333;
   margin-right: 10rpx;
 }
@@ -323,6 +323,13 @@
 .modal-btn:active {
   transform: scale(0.98);
   background-color: #0D64D2;
+}
+
+.tips {
+  font-size: small;
+  text-align: center;
+  padding-bottom: 20rpx;
+  display: block;
 }
 
 /* 弹窗显示动画 */

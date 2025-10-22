@@ -2,6 +2,7 @@ Page({
   data: {
     sourceInfo: null,
     pendingInfo: null,
+    encodedSource: '',
     pendingCount: 0,
     departments: [],
     result:'',
@@ -17,7 +18,7 @@ Page({
   onLoad: function(options) {
     const departments = JSON.parse(decodeURIComponent(options.departments));
     this.setData({
-      departments: departments
+      departments: departments,
     });
     this.fetchPendingMatches();
     this.checkReviewStatus();
@@ -63,7 +64,7 @@ Page({
         departments: departments
       }
     }).then(res => {
-      if (res.result.code === 200 && res.result.data.pendingCount > 0) {
+      if (res.result.code === 200) {
         const { sourceAlumni, pendingAlumni, pendingCount } = res.result.data;
 
         if (pendingAlumni?.birthday) {
@@ -72,7 +73,7 @@ Page({
         if (sourceAlumni?.birthday) {
           sourceAlumni.birthday = this.formatDate(sourceAlumni.birthday);
         }
-
+      
         this.setData({
           sourceInfo: sourceAlumni,
           pendingInfo: pendingAlumni,
@@ -191,7 +192,7 @@ Page({
       success() {
         wx.showModal({
           title: '提示',
-          content: '链接已复制，请在浏览器中粘贴打开',
+          content: '链接已复制，请在浏览器中粘贴后打开',
           showCancel: false
         });
       }

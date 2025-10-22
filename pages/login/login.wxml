@@ -1,6 +1,6 @@
 <view class="login-container">
   <view class="logo-container">
-    <image class="logo" src="https://636c-cloud1-9gmxebo9bcb28c86-1363518935.tcb.qcloud.la/assets/logo.png" mode="widthFix"></image>
+    <image class="logo" src="https://636c-cloud1-9gmxebo9bcb28c86-1363518935.tcb.qcloud.la/images/login.png?sign=51ba910c2933c83a3a299ccc3995a236&t=1761126445" mode="widthFix"></image>
   </view>
 
   <view class="login-card">
