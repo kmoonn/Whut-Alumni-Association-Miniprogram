@@ -10,7 +10,7 @@ Page({
         {
           id: 1,
           name: '校友推荐 ',
-          desc: '推荐 5 名有效重点校友信息',
+          desc: '至少推荐 5 名有效校友信息',
           progress: 0,
           targetPage: '/alumni/pages/apply/apply'
         },

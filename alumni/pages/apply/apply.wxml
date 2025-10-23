@@ -1,5 +1,5 @@
 <view class="top-bar">
-  <text class="title">重点校友推荐</text>
+  <text class="title">校友推荐</text>
   
 </view>
 <view class="header">
@@ -33,8 +33,8 @@
     <input class="input" placeholder="请输入校友工作单位" bindinput="onInputChange" data-field="company" />
   </view>
   <view class="form-item">
-    <text class="label">职务/职位<text class="required">*</text></text>
-    <input class="input" placeholder="请输入校友职务" bindinput="onInputChange" data-field="position" />
+    <text class="label">职位/职务<text class="required">*</text></text>
+    <input class="input" placeholder="请输入校友职位/职务" bindinput="onInputChange" data-field="position" />
   </view>
   <view class="form-item">
     <text class="label">毕业年份</text>
@@ -71,15 +71,15 @@
   <view class="agreement">
     <checkbox-group bindchange="onAgreeChange">
       <label>
-        <checkbox value="agree" checked="{{isAgreed}}" /> 我已阅读并知晓 <text class="link" bind:tap="showDialog" block data-key="showMultiTextAndTitle">《重点校友推荐标准须知》</text>
+        <checkbox value="agree" checked="{{isAgreed}}" /> 我已阅读并知晓 <text class="link" bind:tap="showDialog" block data-key="showMultiTextAndTitle">《校友推荐标准须知》</text>
       </label>
     </checkbox-group>
   </view>
 
-  <t-dialog visible="{{showMultiTextAndTitle}}" title="重点校友推荐标准" confirm-btn="{{ confirmBtn }}" bind:confirm="closeDialog">
+  <t-dialog visible="{{showMultiTextAndTitle}}" title="校友推荐标准" confirm-btn="{{ confirmBtn }}" bind:confirm="closeDialog">
   <scroll-view slot="content" type="list" scroll-y class="long-content">
     <text class="content-container" decode="{{true}}">
-1. 中央机关及其直属机构工作人员；\n2. 各地方机关及有关单位副处级及以上人员；\n3. 高校和科研机构副高级职称及以上人员；\n4. 目前运行良好的各类企业高管及以上负责人员；\n5. 获省部级及以上奖励和荣誉称号人员；\n6. 其他重点校友。
+1. 中央机关及其直属机构工作人员；\n2. 各地方机关及有关单位副处级及以上人员；\n3. 高校和科研机构副高级职称及以上人员；\n4. 目前运行良好的各类企业高管及以上负责人员；\n5. 获省部级及以上奖励和荣誉称号人员；\n6. 其他需要重点推荐的校友。
     </text>
   </scroll-view>
 </t-dialog>

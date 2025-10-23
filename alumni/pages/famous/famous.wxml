@@ -1,5 +1,5 @@
 <view class="top-bar">
-  <text class="title">重点校友</text>
+  <text class="title">在库校友</text>
 </view>
 
 <t-tabs value="{{currentTab}}" space-evenly bind:change="onTabsChange">

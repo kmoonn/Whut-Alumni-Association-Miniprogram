@@ -1,9 +1,9 @@
 <view class="top-bar" style="height: 160rpx; display: flex; box-sizing: border-box">
-  <text class="title">疑似校友确认</text>
+  <text class="title">校友确认</text>
 </view>
 
 <view class="header" wx:if="{{!noMoreData}}">
-  <view class="count">审核进度: {{pendingCount}}/100</view>
+  <view class="count">任务进度: {{pendingCount}}/100</view>
   <image 
     src="https://636c-cloud1-9gmxebo9bcb28c86-1363518935.tcb.qcloud.la/images/question.png?sign=bb80c3e235d7ac591ee3378d22f59b52&t=1760936475" 
     class="question-icon" 
@@ -12,11 +12,11 @@
 </view>
 
 
-<t-dialog visible="{{showMultiTextAndTitle}}" title="疑似校友确认要求" confirm-btn="{{ confirmBtn }}" bind:confirm="closeDialog">
+<t-dialog visible="{{showMultiTextAndTitle}}" title="校友确认要求" confirm-btn="{{ confirmBtn }}" bind:confirm="closeDialog">
   <scroll-view slot="content" type="list" scroll-y class="long-content">
     <text class="content-container" decode="{{true}}">
-1. 左侧为需要确认的疑似校友信息，右侧为“校友库源信息”，作为辅助信息；\n
-2. 根据实际情况选择页面下方三个选项其中一项。
+1. 左侧为需要确认的疑似校友信息，右侧为校友数据库真实存在信息，作为辅助信息；
+2. 根据实际情况选择页面下方三个选项其中一项即可。
     </text>
   </scroll-view>
 </t-dialog>
@@ -32,7 +32,7 @@
   <view class="info-comparison">
     
     <view class="info-section-pending">
-      <view class="section-title">疑似校友信息（待确认）</view>
+      <view class="section-title">待确认疑似校友信息</view>
       <view class="card">
         <text class="info">姓名: {{pendingInfo.name}}</text>
         <text class="info {{diffFields.includes('gender') ? 'diff' : ''}}">性别: {{pendingInfo.sex}}</text>
@@ -42,12 +42,12 @@
         <text class="info {{diffFields.includes('major') ? 'diff' : ''}}">专业: {{pendingInfo.major}}</text>
         <text class="info {{diffFields.includes('region') ? 'diff' : ''}}">所在地: {{pendingInfo.region}}</text>
         <text class="info {{diffFields.includes('company') ? 'diff' : ''}}">工作单位: {{pendingInfo.company}}</text>
-        <text class="info {{diffFields.includes('position') ? 'diff' : ''}}">职务: {{pendingInfo.position}}</text>
+        <text class="info {{diffFields.includes('position') ? 'diff' : ''}}">职位/职务: {{pendingInfo.position}}</text>
       </view>
     </view>
 
     <view class="info-section-source">
-      <view class="section-title">校友库源信息</view>
+      <view class="section-title">校友数据库真实存在信息</view>
       <!-- 有数据时显示信息卡片 -->
       <view class="card" wx:if="{{sourceInfo}}">
         <text class="info">姓名: {{sourceInfo.name || '未填写'}}</text>
@@ -58,7 +58,7 @@
         <text class="info {{diffFields.includes('major') ? 'diff' : ''}}">专业: {{sourceInfo.major || '未填写'}}</text>
         <text class="info {{diffFields.includes('region') ? 'diff' : ''}}">所在地: {{sourceInfo.region || '未填写'}}</text>
         <text class="info {{diffFields.includes('company') ? 'diff' : ''}}">工作单位: {{sourceInfo.company || '未填写'}}</text>
-        <text class="info {{diffFields.includes('position') ? 'diff' : ''}}">职务: {{sourceInfo.position || '未填写'}}</text>
+        <text class="info {{diffFields.includes('position') ? 'diff' : ''}}">职位/职务: {{sourceInfo.position || '未填写'}}</text>
       </view>
       <!-- 无数据时显示提示信息 -->
       <view class="empty-tip" wx:else>

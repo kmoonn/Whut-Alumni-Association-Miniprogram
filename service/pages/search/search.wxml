@@ -5,7 +5,7 @@
 <view class="search-bar">
   <view class="search-input-wrap">
     <icon type="search" size="16" color="#999" />
-    <input class="search-input" placeholder="请输入校友姓名、工作单位或职务" value="{{searchValue}}" bindinput="onSearchInput" bindconfirm="onSearch" />
+    <input class="search-input" placeholder="请输入校友姓名、工作单位、职位/职务查询" value="{{searchValue}}" bindinput="onSearchInput" bindconfirm="onSearch" />
     <icon wx:if="{{searchValue}}" type="clear" size="16" color="#999" bindtap="clearSearch" />
   </view>
 </view>

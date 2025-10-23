@@ -20,7 +20,7 @@
     <text class="value">{{alumniDetail.company}}</text>
   </view>
   <view class="info-item">
-    <text class="label">职务</text>
+    <text class="label">职位/职务</text>
     <text class="value">{{alumniDetail.position}}</text>
   </view>
   <view class="info-item">

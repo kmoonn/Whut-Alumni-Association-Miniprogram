@@ -13,19 +13,19 @@ Page({
     
     const fullList = [
       {
-        name: '重点校友推荐',
+        name: '校友推荐',
         icon: 'apply.png',
         path: '/alumni/pages/apply/apply',
         key: 'apply'
       },
       {
-        name: '疑似校友确认',
+        name: '校友确认',
         icon: 'check.png',
         path: '/alumni/pages/check/dept/dept',
         key: 'check'
       },
       {
-        name: '重点校友',
+        name: '在库校友',
         icon: 'famous.png',
         path: '/alumni/pages/famous/famous',
         key: 'famous'
