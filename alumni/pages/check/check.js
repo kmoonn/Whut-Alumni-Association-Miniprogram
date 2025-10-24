@@ -64,7 +64,8 @@ Page({
         departments: departments
       }
     }).then(res => {
-      if (res.result.code === 200) {
+      console.log(res);
+      if (res.result.code === 200 && res.result.data.count != 0) {
         const { sourceAlumni, pendingAlumni, pendingCount } = res.result.data;
 
         if (pendingAlumni?.birthday) {

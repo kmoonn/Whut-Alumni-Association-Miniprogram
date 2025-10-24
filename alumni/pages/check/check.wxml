@@ -23,7 +23,7 @@
 
 <view class="empty-state" wx:if="{{noMoreData}}">
   <view class="empty-content">
-    <text class="empty-text">所选学院已全部审核</text>
+    <text class="empty-text">您所选学院已全部确认完成</text>
     <button class="refresh-btn" bindtap="fetchPendingMatches">刷新</button>
   </view>
 </view>
@@ -68,8 +68,8 @@
   </view>
 </view>
 
-
-<view class="source-info" wx:if="{{!noMoreData}}">
+<view>
+  <view class="source-info" wx:if="{{!noMoreData}}">
   <text class="label">疑似校友信息来源：</text>
   <t-link 
     size="small" 
@@ -78,13 +78,12 @@
     prefixIcon="copy" 
     hover 
     bindtap="copyLink"
-    style="margin-left: 10px;"
   />
 </view>
-
-<span class="tips">
+  <span class="tips" wx:if="{{!noMoreData}}">
     （因微信安全机制限制自动跳转，请复制链接到浏览器查看）
   </span>
+</view>
 
 <view class="action-area" wx:if="{{!noMoreData}}">
   <view class="action-title">提交结果</view>
@@ -103,7 +102,7 @@
       <text class="popup-subtitle">您已完成{{pendingCount}}条校友信息审核</text>
     </view>
     <view class="popup-content">
-      <text class="congrats-text">🎉 太棒了！全部审核任务已完成 🎉</text>
+      <text class="congrats-text">🎉 太棒了！全部任务已完成 🎉</text>
     </view>
     <view class="modal-footer">
       <button class="modal-btn" bindtap="closeModal">确认</button>
