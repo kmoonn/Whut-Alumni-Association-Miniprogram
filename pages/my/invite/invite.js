@@ -11,7 +11,7 @@ Page({
 
   async generateCode() {
     const userInfo = wx.getStorageSync('userInfo');
-    if (!userInfo || !userInfo.id) {
+    if (!userInfo || !userInfo.id == null) {
       wx.showToast({ title: '用户未登录', icon: 'none' });
       return;
     }
@@ -37,7 +37,7 @@ Page({
 
   async loadCodes() {
     const userInfo = wx.getStorageSync('userInfo');
-    if (!userInfo || !userInfo.id) {
+    if (!userInfo || userInfo.id == null) {
       wx.showToast({ title: '用户未登录', icon: 'none' });
       return;
     }
