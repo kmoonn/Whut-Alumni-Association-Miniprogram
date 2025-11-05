@@ -94,7 +94,7 @@
   </view>
 </view>
 
-<view class="modal-layer" wx:if="{{showModal}}">
+<view class="modal-layer" wx:if="{{showModal&&!hasShown100Modal}}">
   <view class="modal-mask" bindtap="closeModal"></view>
   <view class="modal-content">
     <view class="popup-header">

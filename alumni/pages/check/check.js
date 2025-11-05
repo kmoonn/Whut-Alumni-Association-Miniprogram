@@ -5,17 +5,21 @@ Page({
     encodedSource: '',
     pendingCount: 0,
     departments: [],
-    result:'',
-    remark:'',
+    result: '',
+    remark: '',
     reasonOptions: ['查询档案', '本人认识', '询问他人', '其他'],
     noMoreData: false,
-    confirmBtn: { content: '我已知晓', variant: 'base' },
+    confirmBtn: {
+      content: '我已知晓',
+      variant: 'base'
+    },
     dialogKey: '',
     showMultiTextAndTitle: false,
-    showModal: false
+    showModal: false,
+    hasShown100Modal: false,
   },
-  
-  onLoad: function(options) {
+
+  onLoad: function (options) {
     const departments = JSON.parse(decodeURIComponent(options.departments));
     this.setData({
       departments: departments,
@@ -66,7 +70,11 @@ Page({
     }).then(res => {
       console.log(res);
       if (res.result.code === 200 && res.result.data.count != 0) {
-        const { sourceAlumni, pendingAlumni, pendingCount } = res.result.data;
+        const {
+          sourceAlumni,
+          pendingAlumni,
+          pendingCount
+        } = res.result.data;
 
         if (pendingAlumni?.birthday) {
           pendingAlumni.birthday = this.formatDate(pendingAlumni.birthday);
@@ -74,7 +82,7 @@ Page({
         if (sourceAlumni?.birthday) {
           sourceAlumni.birthday = this.formatDate(sourceAlumni.birthday);
         }
-      
+
         this.setData({
           sourceInfo: sourceAlumni,
           pendingInfo: pendingAlumni,
@@ -100,16 +108,28 @@ Page({
   },
 
   toggleTooltip() {
-    this.setData({ showMultiTextAndTitle: true, dialogKey: 'showMultiTextAndTitle' });
+    this.setData({
+      showMultiTextAndTitle: true,
+      dialogKey: 'showMultiTextAndTitle'
+    });
   },
 
   showDialog(e) {
-    const { key } = e.currentTarget.dataset;
-    this.setData({ [key]: true, dialogKey: key });
+    const {
+      key
+    } = e.currentTarget.dataset;
+    this.setData({
+      [key]: true,
+      dialogKey: key
+    });
   },
   closeDialog() {
-    const { dialogKey } = this.data;
-    this.setData({ [dialogKey]: false });
+    const {
+      dialogKey
+    } = this.data;
+    this.setData({
+      [dialogKey]: false
+    });
   },
 
   rejectMatch() {
@@ -201,19 +221,19 @@ Page({
   },
 
   checkReviewStatus() {
-    if (this.data.pendingCount >= 100) {
+    if (this.data.pendingCount >= 100 && !this.data.hasShown100Modal) {
       setTimeout(() => {
         this.setData({
-          showModal: true
+          showModal: true,
         });
       }, 1000);
     }
-},
+  },
 
-closeModal() {
-  this.setData({
-    showModal: false
-  });
-}
+  closeModal() {
+    this.setData({
+      showModal: false,
+      hasShown100Modal: true
+    });
+  }
 });
-
