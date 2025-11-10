@@ -1,0 +1,41 @@
+<view class="container">
+  <!-- 标题栏 -->
+  <view class="header">
+    <text class="title">推荐历史记录</text>
+  </view>
+
+  <!-- 列表区域 -->
+  <scroll-view 
+    class="history-list" 
+    scroll-y 
+    enable-back-to-top 
+    refresher-enabled
+    refresher-triggered="{{refreshing}}"
+    bindrefresherrefresh="onPullDownRefresh"
+    bindscrolltolower="onReachBottom">
+
+    <!-- 有数据 -->
+    <block wx:if="{{list.length > 0}}">
+      <block wx:for="{{list}}" wx:key="id">
+        <view class="item" bindtap="goToEdit" data-index="{{index}}">
+          <view class="name">{{item.name}}</view>
+          <view class="info">
+            <text>{{item.company}} ｜ {{item.position}}</text>
+          </view>
+          <view class="extra">
+            <text>{{item.graduation_year}}届 · {{item.education}}</text>
+          </view>
+          <view class="time">{{item.created_at | formatDate}}</view>
+        </view>
+      </block>
+    </block>
+
+    <!-- 空状态 -->
+    <view wx:if="{{list.length === 0 && !loading}}" class="empty">
+      <text>暂无推荐记录</text>
+    </view>
+
+    <!-- 加载中 -->
+    <view wx:if="{{loading}}" class="loading">加载中...</view>
+  </scroll-view>
+</view>

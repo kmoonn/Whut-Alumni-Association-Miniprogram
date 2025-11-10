@@ -147,6 +147,7 @@ Page({
         reviewerId: reviewerId
       }
     }).then(res => {
+      console.log(res)
       if (res.result.code === 200) {
         const { taskCount, applyCount } = res.result.data;
         this.setData({

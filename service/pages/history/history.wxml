@@ -1,0 +1,101 @@
+<view class="top-bar">
+  <text class="title">校友确认历史记录</text>
+</view>
+
+<!-- 搜索区域 -->
+<view class="search-section">
+  <input class="search-input" placeholder="请输入姓名搜索" bindinput="onSearchInput" value="{{searchName}}" />
+  <button class="search-btn" bindtap="onSearch">搜索</button>
+</view>
+
+<!-- 历史记录列表 -->
+<scroll-view scroll-y class="record-list" bindscrolltolower="loadMore" lower-threshold="50">
+  <block wx:for="{{records}}" wx:key="id">
+    <view class="record-card" bindtap="viewDetail" data-item="{{item}}">
+      <view class="record-header">
+        <text class="record-name">{{item.name}}</text>
+        <text class="record-result {{item.result === '是校友' ? 'yes' : item.result === '非校友' ? 'no' : 'unknown'}}">
+          {{item.result}}
+        </text>
+      </view>
+      <view class="record-info">
+        <text>{{item.department}} · {{item.graduation_year}}</text>
+        <text class="date">确认日期：{{item.date}}</text>
+      </view>
+    </view>
+  </block>
+
+  <view wx:if="{{records.length === 0 && !loading}}" class="no-data">
+    <text>暂无匹配记录</text>
+  </view>
+
+  <view wx:if="{{loading}}" class="loading">
+    <text>加载中...</text>
+  </view>
+
+  <view wx:if="{{noMore}}" class="no-more">
+    <text>没有更多记录了</text>
+  </view>
+</scroll-view>
+
+<!-- 详情弹窗 -->
+<t-dialog visible="{{showDetail}}" confirm-btn="提交修改" cancel-btn="关闭" bind:confirm="submitUpdate" bind:cancel="closeDetail">
+  <!-- 整体弹窗滚动 -->
+  <scroll-view slot="content" scroll-y class="detail-scroll">
+
+    <!-- 并列信息区域 -->
+    <view class="info-container">
+
+      <!-- 基础信息 -->
+      <view class="info-section">
+        <view class="section-title">基础信息</view>
+        <view class="columns">
+          <view class="column-item"><text>姓名：</text><text>{{detail.name}}</text></view>
+          <view class="column-item"><text>性别：</text><text>{{detail.sex || '未知'}}</text></view>
+          <view class="column-item"><text>毕业年份：</text><text>{{detail.graduation_year || '未知'}}</text></view>
+          <view class="column-item"><text>学院：</text><text>{{detail.department || '未知'}}</text></view>
+          <view class="column-item"><text>专业：</text><text>{{detail.major || '未知'}}</text></view>
+          <view class="column-item"><text>公司：</text><text>{{detail.company || '未知'}}</text></view>
+          <view class="column-item"><text>职位：</text><text>{{detail.position || '未知'}}</text></view>
+          <view class="column-item"><text>地区：</text><text>{{detail.region || '未知'}}</text></view>
+        </view>
+      </view>
+
+      <!-- 校友库源信息 -->
+      <view class="info-section">
+        <view class="section-title">校友库源信息</view>
+        <block wx:if="{{sourceInfo}}">
+          <view class="columns">
+            <view class="column-item"><text>姓名：</text><text>{{sourceInfo.source_name}}</text></view>
+            <view class="column-item"><text>性别：</text><text>{{sourceInfo.source_sex || '未知'}}</text></view>
+            <view class="column-item"><text>学院：</text><text>{{sourceInfo.source_department}}</text></view>
+            <view class="column-item"><text>专业：</text><text>{{sourceInfo.source_major}}</text></view>
+            <view class="column-item"><text>毕业年份：</text><text>{{sourceInfo.source_graduation_year}}</text></view>
+            <view class="column-item"><text>公司：</text><text>{{sourceInfo.source_company || '未知'}}</text></view>
+            <view class="column-item"><text>职位：</text><text>{{sourceInfo.source_position || '未知'}}</text></view>
+            <view class="column-item"><text>地区：</text><text>{{sourceInfo.source_region || '无'}}</text></view>
+          </view>
+        </block>
+        <block wx:else>
+          <view class="no-source">暂无校友库源信息</view>
+        </block>
+      </view>
+
+    </view>
+
+    <!-- 修改区域 -->
+    <view class="modify-section">
+      <view class="section-title">修改确认结果</view>
+      <view class="picker" bindtap="chooseResult">
+        当前：{{updateResult || '请选择'}}
+      </view>
+
+      <view class="section-title">选择理由（可选）</view>
+      <view class="picker" bindtap="chooseReason">
+        {{selectedReason || '请选择理由'}}
+      </view>
+    </view>
+
+
+  </scroll-view>
+</t-dialog>

@@ -28,7 +28,12 @@
         "pages/activity/activity",
         "pages/activityDetail/activityDetail",
         "pages/company/company",
-        "pages/companyDetail/companyDetail"
+        "pages/companyDetail/companyDetail",
+        "pages/history/history",
+        "pages/ranks/ranks",
+        "pages/apply_history/apply_history",
+        "pages/edit_apply/edit_apply"
+
       ]
     }
   ],

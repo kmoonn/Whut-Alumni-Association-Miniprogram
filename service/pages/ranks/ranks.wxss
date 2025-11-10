@@ -1,0 +1,111 @@
+
+
+/* 顶部栏 */
+.top-bar {
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  text-align: center;
+  background-color: #007BFF; /* 蓝色 */
+  color: #fff;
+}
+
+/* 滚动列表 */
+.rank-list {
+  padding: 20rpx;
+  background-color: #f0f4ff; /* 浅蓝底 */
+}
+
+/* 排行卡片 */
+.rank-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15rpx 20rpx;
+  margin-bottom: 15rpx;
+  border-radius: 20rpx;
+  background-color: #fff;
+  box-shadow: 0 4rpx 8rpx rgba(0,0,0,0.05);
+}
+
+/* 前三名卡片特殊背景 */
+.rank-card.top-three {
+  background: linear-gradient(90deg, #FFD700, #FFFACD); /* 黄白渐变 */
+}
+
+/* 左侧区域 */
+.rank-left {
+  display: flex;
+  align-items: center;
+  flex-shrink: 1;
+}
+
+/* 奖章 */
+.medal {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+}
+
+/* 非前三名名次数字 */
+.rank-number {
+  width: 30rpx;
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #007BFF;
+  margin-right: 10rpx;
+}
+
+/* 姓名 */
+.rank-name {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #007BFF;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 右侧完成数量 */
+.rank-right {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: black;
+  flex-shrink: 0;
+}
+
+/* 无数据提示 */
+.no-data {
+  text-align: center;
+  color: #888;
+  margin-top: 50rpx;
+}
+
+
+/* 页面整体使用flex布局 */
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* 整屏高度 */
+}
+
+/* 顶部栏 */
+.top-bar {
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  text-align: center;
+  background-color: #007BFF; /* 蓝色 */
+  color: #fff;
+}
+
+/* 滚动列表撑满剩余空间 */
+.rank-list {
+  flex: 1; /* 剩余空间都给列表 */
+  padding: 20rpx;
+  background-color: #f0f4ff; /* 浅蓝底 */
+  overflow-y: scroll;
+}

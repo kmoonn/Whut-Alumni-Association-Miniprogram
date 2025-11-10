@@ -41,6 +41,25 @@ Page({
         icon: 'map.png',
         path: '/service/pages/map/map',
         key: 'map'
+      },
+      {
+        name: '确认历史',
+        icon: 'history.png',
+        path: '/service/pages/history/history',
+        key: 'history'
+      },
+      {
+        name: '排行榜',
+        icon: 'ranks.png',
+        path: '/service/pages/ranks/ranks',
+        key: 'ranks'
+      },
+      {
+        name:"推荐历史",
+        icon: 'recommend_history.png',
+        path: '/service/pages/apply_history/apply_history',
+        key: 'apply_history'
+
       }
     ];
 
@@ -50,10 +69,11 @@ Page({
     let userPermissions = [];
 
     if (userRole === 'admin' || userRole === 'leader') {
-      userPermissions = ['apply', 'check', 'famous', 'search', 'map'];
+      userPermissions = ['apply', 'apply_history', 'check', 'history', 'famous', 'search', 'map','ranks'];
     } else {
-      userPermissions = ['apply', 'check'];
+      userPermissions = ['apply', 'apply_history', 'check', 'history','ranks'];
     }
+    // console.log(userPermissions)
 
     const visible = fullList.filter(item => userPermissions.includes(item.key));
 

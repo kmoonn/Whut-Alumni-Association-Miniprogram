@@ -105,7 +105,7 @@ Page({
               position: this.data.position,
               graduation_year: this.data.graduation_year,
               education: this.data.education,
-              department: this.department,
+              department: this.data.department,
               major: this.data.major,
               phone: this.data.phone,
               deeds: this.data.deeds,

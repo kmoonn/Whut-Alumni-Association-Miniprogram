@@ -1,0 +1,5 @@
+{
+  "usingComponents" : {
+    "t-dialog" : "tdesign-miniprogram/dialog/dialog"
+  }
+}

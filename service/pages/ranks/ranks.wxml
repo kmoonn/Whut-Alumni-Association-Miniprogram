@@ -1,0 +1,24 @@
+<view class="page">
+  <view class="top-bar">校友任务排行榜</view>
+
+  <scroll-view scroll-y class="rank-list">
+    <block wx:for="{{rankings}}" wx:key="index">
+      <view class="rank-card {{index < 3 ? 'top-three' : ''}}">
+        <view class="rank-left">
+          <block wx:if="{{index < 3}}">
+            <image src="{{imageBaseUrl}}{{medals[index]}}" class="medal"/>
+          </block>
+          <block wx:else>
+            <text class="rank-number">{{index + 1}}</text>
+          </block>
+          <text class="rank-name">{{item.nickname}}</text>
+        </view>
+        <view class="rank-right">{{item.completed_count}}</view>
+      </view>
+    </block>
+
+    <view wx:if="{{rankings.length === 0}}" class="no-data">
+      暂无排行榜数据
+    </view>
+  </scroll-view>
+</view>

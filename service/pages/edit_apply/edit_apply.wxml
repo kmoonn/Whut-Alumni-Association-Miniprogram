@@ -1,0 +1,79 @@
+<view class="top-bar">
+  <text class="title">校友推荐</text>
+</view>
+
+<view class="header">
+  <text class="title" style="font-size: medium;">信息填写</text>
+</view>
+
+<view class="form">
+  <!-- 类别复选框可选 -->
+<view class="form-item">
+  <text class="label">类别<text class="required">*</text></text>
+  <checkbox-group bindchange="onCategoryChange">
+    <block wx:for="{{checkboxItems}}" wx:key="Name">
+      <label class="checkbox-label">
+        <checkbox value="{{item.Name}}" checked="{{item.checked}}" />{{item.Name}}
+      </label>
+    </block>
+  </checkbox-group>
+</view>
+
+
+  <view class="form-item">
+    <text class="label">姓名<text class="required">*</text></text>
+    <input class="input" value="{{name}}" placeholder="请输入校友姓名" bindinput="onInputChange" data-field="name" />
+  </view>
+
+  <view class="form-item">
+    <text class="label">所在地<text class="required">*</text></text>
+    <picker mode="region" level="city" bindchange="onRegionChange">
+      <view class="picker">{{region || '请选择校友所在地'}}</view>
+    </picker>
+  </view>
+
+  <view class="form-item">
+    <text class="label">工作单位<text class="required">*</text></text>
+    <input class="input" value="{{company}}" placeholder="请输入校友工作单位" bindinput="onInputChange" data-field="company" />
+  </view>
+
+  <view class="form-item">
+    <text class="label">职位/职务<text class="required">*</text></text>
+    <input class="input" value="{{position}}" placeholder="请输入校友职位/职务" bindinput="onInputChange" data-field="position" />
+  </view>
+
+  <view class="form-item">
+    <text class="label">毕业年份</text>
+    <picker mode="date" fields="year" bindchange="onDateChange">
+      <view class="picker">{{graduation_year || '请选择校友毕业年份'}}</view>
+    </picker>
+  </view>
+
+  <view class="form-item">
+    <text class="label">学历</text>
+    <input class="input" value="{{education}}" placeholder="请输入校友学历" bindinput="onInputChange" data-field="education" />
+  </view>
+
+  <view class="form-item">
+    <text class="label">毕业学院</text>
+    <input class="input" value="{{department}}" placeholder="请输入校友毕业学院" bindinput="onInputChange" data-field="department" />
+  </view>
+
+  <view class="form-item">
+    <text class="label">毕业专业<text class="required">*</text></text>
+    <input class="input" value="{{major}}" placeholder="请输入校友毕业专业" bindinput="onInputChange" data-field="major" />
+  </view>
+
+  <view class="form-item">
+    <text class="label">联系方式</text>
+    <input class="input" value="{{phone}}" placeholder="请输入校友联系方式" bindinput="onInputChange" data-field="phone" />
+  </view>
+
+  <!-- 重大荣誉或事迹 -->
+  <view class="form-item" wx:if="{{category.indexOf('其他') === -1}}">
+    <text class="label">重大荣誉或事迹</text>
+    <textarea class="input" value="{{deeds}}" placeholder="请输入相关事迹" bindinput="onInputChange" data-field="deeds" />
+  </view>
+
+  <button class="submit-btn" bindtap="submitForm">提交</button>
+</view>
