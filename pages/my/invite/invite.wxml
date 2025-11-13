@@ -24,7 +24,7 @@
   <view wx:if="{{showQr}}" class="qr-popup" bindtap="closeQr">
   <view class="qr-modal" catchtap="stopPropagation">
     <image class="qr-image" src="{{qrCodeUrl}}" mode="widthFix" />
-    <text class="qr-tip">截图保存即可</text>
+    <text class="qr-tip">受微信限制，二维码需自行截图保存，感谢理解!</text>
     <text class="close-btn" bindtap="closeQr">关闭</text>
   </view>
 </view>

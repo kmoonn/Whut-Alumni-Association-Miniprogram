@@ -33,6 +33,7 @@ Page({
 
       const data = res.result?.data?.list || [];
 
+
       this.setData({
         list: refresh ? data : [...this.data.list, ...data],
         page: page + 1,

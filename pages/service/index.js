@@ -43,6 +43,13 @@ Page({
         key: 'map'
       },
       {
+        name:"推荐历史",
+        icon: 'recommend_history.png',
+        path: '/service/pages/apply_history/apply_history',
+        key: 'apply_history'
+
+      },
+      {
         name: '确认历史',
         icon: 'history.png',
         path: '/service/pages/history/history',
@@ -54,13 +61,6 @@ Page({
         path: '/service/pages/ranks/ranks',
         key: 'ranks'
       },
-      {
-        name:"推荐历史",
-        icon: 'recommend_history.png',
-        path: '/service/pages/apply_history/apply_history',
-        key: 'apply_history'
-
-      }
     ];
 
     const userInfo = wx.getStorageSync('userInfo');
