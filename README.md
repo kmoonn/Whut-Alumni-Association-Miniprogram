@@ -1,8 +1,8 @@
 # Whut-Alumni-Association-Miniprogram
 
-# 武汉理工大学校友会微信小程序
+# 武汉理工大学“发现校友”微信小程序
 
-武汉理工大学校友会微信小程序是一个服务于武汉理工大学校友处领导、全校各级部门教职工的服务平台，旨在挖掘知名校友、加强知名校友与母校之间的联系，促进知名校友之间的交流与合作。
+武汉理工大学“发现校友”微信小程序是一个服务于武汉理工大学校友处领导、全校各级部门教职工的服务平台，旨在挖掘各界重点校友、加强校友与母校之间的联系，促进校友之间的交流与合作。
 
 ## 主要功能
 
@@ -14,15 +14,13 @@
 - 可以查看待审核的校友信息
 - 提供详细的审核记录
 
-### 3. 知名校友
-- 展示学校知名校友信息
+### 3. 重点校友
+- 展示学校重点校友信息
 - 按照政商学等多维度分类
 
 ### 4. 校友地图
 - 查找指定范围内校友工作单位
 - 搜索关键字模糊查询校友信息
-
-### 5. 校友活动、校友企业
 
 ## 技术栈
 - 微信小程序原生开发框架
@@ -41,19 +39,6 @@ WHUT-Alumni-Association-MINIPROGRAM
 │     ├─ famous
 │     └─ famous_detail
 ├─ cloudfunctions 云函数
-│  ├─ apply
-│  ├─ check
-│  ├─ getActivity
-│  ├─ getActivityDetail
-│  ├─ getAlumnus
-│  ├─ getAlumnusDetail
-│  ├─ getCompany
-│  ├─ getCompanyDetail
-│  ├─ getNews
-│  ├─ getVisualData
-│  ├─ login
-│  ├─ register
-│  └─ search
 ├─ components 组件
 │  ├─ iView
 │  └─ navigation-bar
@@ -80,4 +65,4 @@ WHUT-Alumni-Association-MINIPROGRAM
 
 ## 版权说明
 
-© 2025 武汉理工大学。保留所有权利。
+© 2025，武汉理工大学，保留所有权利。
