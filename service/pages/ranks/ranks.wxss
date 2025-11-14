@@ -1,79 +1,16 @@
-
-
-/* 顶部栏 */
+/* 顶部标题栏 */
 .top-bar {
-  height: 80rpx;
-  line-height: 80rpx;
-  font-size: 32rpx;
-  font-weight: bold;
-  text-align: center;
-  background-color: #007BFF; /* 蓝色 */
-  color: #fff;
-}
-
-/* 滚动列表 */
-.rank-list {
-  padding: 20rpx;
-  background-color: #f0f4ff; /* 浅蓝底 */
-}
-
-/* 排行卡片 */
-.rank-card {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15rpx 20rpx;
-  margin-bottom: 15rpx;
-  border-radius: 20rpx;
-  background-color: #fff;
-  box-shadow: 0 4rpx 8rpx rgba(0,0,0,0.05);
+  padding: 15px 13px;
+  background: linear-gradient(to right, #0056b3, #007bff);
+  color: white;
+  font-size: 40rpx;
+  font-weight: bold;
 }
 
 /* 前三名卡片特殊背景 */
 .rank-card.top-three {
   background: linear-gradient(90deg, #FFD700, #FFFACD); /* 黄白渐变 */
-}
-
-/* 左侧区域 */
-.rank-left {
-  display: flex;
-  align-items: center;
-  flex-shrink: 1;
-}
-
-/* 奖章 */
-.medal {
-  width: 40rpx;
-  height: 40rpx;
-  margin-right: 10rpx;
-}
-
-/* 非前三名名次数字 */
-.rank-number {
-  width: 30rpx;
-  text-align: center;
-  font-size: 28rpx;
-  font-weight: bold;
-  color: #007BFF;
-  margin-right: 10rpx;
-}
-
-/* 姓名 */
-.rank-name {
-  font-size: 28rpx;
-  font-weight: bold;
-  color: #007BFF;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-/* 右侧完成数量 */
-.rank-right {
-  font-size: 28rpx;
-  font-weight: bold;
-  color: black;
-  flex-shrink: 0;
 }
 
 /* 无数据提示 */
@@ -83,29 +20,60 @@
   margin-top: 50rpx;
 }
 
+.rank-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 14rpx 26rpx;
+  border-radius: 20rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 6rpx 20rpx rgba(0,0,0,0.06);
+}
 
-/* 页面整体使用flex布局 */
-.page {
+/* 左侧信息 */
+.rank-left {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+}
+.medal {
+  width: 60rpx;
+  height: 60rpx;
+}
+.rank-number {
+  font-size: 36rpx;
+  font-weight: 600;
+  width: 60rpx;
+  text-align: center;
+  color: #666;
+}
+.rank-name {
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #333;
+}
+
+/* 右侧两项指标 */
+.rank-stats {
+  display: flex;
+  gap: 30rpx;
+}
+
+.stat-item {
   display: flex;
   flex-direction: column;
-  height: 100vh; /* 整屏高度 */
+  align-items: center;
 }
 
-/* 顶部栏 */
-.top-bar {
-  height: 80rpx;
-  line-height: 80rpx;
-  font-size: 32rpx;
-  font-weight: bold;
-  text-align: center;
-  background-color: #007BFF; /* 蓝色 */
-  color: #fff;
+.stat-label {
+  font-size: 28rpx;
+  color: #888;
 }
 
-/* 滚动列表撑满剩余空间 */
-.rank-list {
-  flex: 1; /* 剩余空间都给列表 */
-  padding: 20rpx;
-  background-color: #f0f4ff; /* 浅蓝底 */
-  overflow-y: scroll;
+.stat-value {
+  margin-top: 2rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #0052d9;
 }

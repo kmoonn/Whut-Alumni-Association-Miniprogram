@@ -1,68 +1,122 @@
 .container {
+  background: #f7f8fa;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  background: #f5f6f7;
 }
 
+.top-bar {
+  display: flex;
+  padding: 15px 13px;
+  background: linear-gradient(to right, #0056b3, #007bff);
+  color: white;
+  font-size: 40rpx;
+  font-weight: bold;
+}
+
+/* 标题栏 */
 .header {
-  background: linear-gradient(90deg, #4a90e2, #50c9ce);
-  padding: 30rpx;
-  text-align: center;
+  padding: 40rpx 32rpx 20rpx;
+  background: #ffffff;
+  border-bottom: 1rpx solid #f0f0f0;
 }
 
-.title {
-  color: #fff;
-  font-size: 34rpx;
-  font-weight: 600;
-}
-
+/* 列表区域 */
 .history-list {
   flex: 1;
-  padding: 20rpx;
+  padding: 20rpx 32rpx;
+  box-sizing: border-box;
 }
 
+/* 每一项卡片 */
 .item {
-  background: #fff;
-  margin-bottom: 20rpx;
-  border-radius: 16rpx;
-  padding: 24rpx;
-  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  padding: 32rpx;
+  border-radius: 20rpx;
+  margin-bottom: 24rpx;
+  box-shadow: 0 8rpx 24rpx rgba(0,0,0,0.04);
+  transition: all 0.2s;
+}
+.item:active {
+  transform: scale(0.98);
 }
 
+/* 左侧信息 */
+.item-left {
+  max-width: 75%;
+}
 .name {
-  font-size: 32rpx;
+  font-size: 34rpx;
   font-weight: 600;
-  color: #333;
+  color: #111;
+  margin-bottom: 6rpx;
 }
-
-.info {
-  margin-top: 10rpx;
-  color: #666;
+.sub-info {
   font-size: 26rpx;
+  color: #666;
+  margin-bottom: 12rpx;
 }
 
-.extra {
-  margin-top: 10rpx;
-  color: #999;
-  font-size: 24rpx;
+/* 标签样式（年份 + 学历） */
+.tag-line {
+  display: flex;
+  gap: 12rpx;
 }
-
-.time {
-  margin-top: 14rpx;
-  text-align: right;
-  color: #bbb;
+.tag {
+  padding: 6rpx 14rpx;
+  background: #eef5ff;
+  color: #2a74e8;
   font-size: 22rpx;
+  border-radius: 10rpx;
 }
 
+/* 右侧部分：时间 + 箭头 */
+.item-right {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.time {
+  font-size: 26rpx;
+  color: #999;
+  margin-bottom: 4rpx;
+}
+.arrow {
+  font-size: 40rpx;
+  color: #ccc;
+}
+
+/* 空状态 */
 .empty {
-  text-align: center;
-  color: #aaa;
-  margin-top: 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 180rpx;
+}
+.empty-img {
+  width: 260rpx;
+  height: 260rpx;
+  opacity: 0.6;
+}
+.empty-text {
+  margin-top: 20rpx;
+  font-size: 28rpx;
+  color: #888;
 }
 
+/* 加载中 */
 .loading {
   text-align: center;
-  color: #666;
-  margin: 20rpx 0;
+  padding: 40rpx 0;
+  font-size: 28rpx;
+  color: #888;
+}
+
+.date {
+  font-size: 26rpx;
+  color: #999;
 }

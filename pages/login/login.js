@@ -4,7 +4,7 @@ Page({
     username: '',
     password: '',
     isAgreed: false,
-    confirmBtn: { content: '知道了', variant: 'base' },
+    confirmBtn: { content: '我知道了', variant: 'base' },
     dialogKey: '',
     showMultiTextAndTitle: false,
 

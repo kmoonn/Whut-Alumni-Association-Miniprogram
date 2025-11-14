@@ -32,8 +32,8 @@
         "pages/history/history",
         "pages/ranks/ranks",
         "pages/apply_history/apply_history",
-        "pages/edit_apply/edit_apply"
-
+        "pages/edit_apply/edit_apply",
+        "pages/recommend/recommend"
       ]
     }
   ],
@@ -65,7 +65,7 @@
   },
   "plugins": {
     "citySelector": {
-      "version": "1.0.2",
+      "version": "1.0.3",
       "provider": "wx63ffb7b7894e99ae"
     }
   },

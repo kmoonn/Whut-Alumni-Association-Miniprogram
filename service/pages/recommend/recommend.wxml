@@ -1,0 +1,55 @@
+<view class="top-bar">
+    <text class="title">邀请推荐</text>
+  </view>
+<view class="container">
+  
+  <view class="form-item">
+    <view class="label">姓名</view>
+    <t-input placeholder="请输入姓名" value="{{formData.name}}" bindchange="onChangeName" />
+  </view>
+
+  <view class="form-item">
+    <view class="label">职工号</view>
+    <t-input placeholder="请输入职工号" value="{{formData.staffId}}" bindchange="onChangeStaffId" />
+  </view>
+
+  <view class="form-item">
+    <view class="label">手机号码</view>
+    <t-input placeholder="请输入手机号" type="number" value="{{formData.phone}}" bindchange="onChangePhone" />
+  </view>
+
+  <view class="form-item">
+    <view class="label">所在单位</view>
+    <t-input placeholder="请输入所在单位" value="{{formData.company}}" bindchange="onChangeCompany" />
+  </view>
+
+  <view class="form-item">
+    <view class="label">职位/职务</view>
+    <t-input placeholder="请输入职位或职务" value="{{formData.position}}" bindchange="onChangePosition" />
+  </view>
+
+  <view class="form-item">
+    <view class="label">邀请人</view>
+    <t-input value="{{formData.inviter}}" readonly></t-input>
+  </view>
+
+  <view class="submit-btn">
+    <t-button size="middle" theme="primary" block bindtap="onSubmit">邀请</t-button>
+  </view>
+
+  <t-popup visible="{{visible}}" placement="center" bind:visible-change="onVisibleChange">
+  <view class="popup-wrapper">
+    <view class="popup-header">
+      邀请成功
+    </view>
+    <view class="popup-content">
+      请通知被邀请人：登录时,
+      <text class="highlight">用户名为职工号，初始密码为手机号码</text>。
+    </view>
+    <view class="popup-footer">
+      <t-button theme="primary" block bindtap="onClose">我知道了</t-button>
+    </view>
+    <t-icon class="popup-close" name="close" size="48rpx" bindtap="onClose"/>
+  </view>
+</t-popup>
+</view>

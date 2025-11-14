@@ -58,6 +58,12 @@ Page({
 
       const newRecords = res.result.data.list || [];
       const total = res.result.data.total || 0;
+      
+      newRecords.forEach(item => {
+        if (item.date) {
+          item.date = formatDateTime(item.date);
+        }
+      });
 
       this.setData({
         records: [...this.data.records, ...newRecords],
@@ -202,3 +208,7 @@ Page({
     this.setData({ showDetail: false });
   }
 });
+
+function formatDateTime(dateStr) {
+  return dateStr.slice(0, 16).replace('T', ' ');
+}

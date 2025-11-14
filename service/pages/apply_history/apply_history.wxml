@@ -1,41 +1,51 @@
-<view class="container">
-  <!-- 标题栏 -->
-  <view class="header">
+<view class="top-bar">
     <text class="title">推荐历史记录</text>
+</view>
+
+<view class="container">
+
+<!-- 列表区域 -->
+<scroll-view 
+  class="history-list" 
+  scroll-y 
+  enable-back-to-top
+  refresher-enabled
+  refresher-triggered="{{refreshing}}"
+  bindrefresherrefresh="onPullDownRefresh"
+  bindscrolltolower="onReachBottom">
+
+  <!-- 有数据 -->
+  <block wx:if="{{list.length > 0}}">
+    <block wx:for="{{list}}" wx:key="id">
+      <view class="item" bindtap="goToEdit" data-index="{{index}}">
+        
+        <view class="item-left">
+          <view class="name">{{item.name}}</view>
+          <view class="sub-info">
+            {{item.company}} ｜ {{item.position}}
+          </view>
+          <view class="tag-line">
+            <view class="tag">{{item.graduation_year}}</view>
+            <view class="tag">{{item.education}}</view>
+          </view>
+          <text class="date">推荐时间：{{item.created_at}}</text>
+        </view>
+
+        <view class="item-right">
+          <text class="arrow">›</text>
+        </view>
+
+      </view>
+    </block>
+  </block>
+
+  <view wx:if="{{list.length === 0 && !loading}}" class="empty">
+    <text class="empty-text">暂无推荐记录</text>
   </view>
 
-  <!-- 列表区域 -->
-  <scroll-view 
-    class="history-list" 
-    scroll-y 
-    enable-back-to-top 
-    refresher-enabled
-    refresher-triggered="{{refreshing}}"
-    bindrefresherrefresh="onPullDownRefresh"
-    bindscrolltolower="onReachBottom">
+  <view wx:if="{{loading}}" class="loading">
+    <text>加载中...</text>
+  </view>
 
-    <!-- 有数据 -->
-    <block wx:if="{{list.length > 0}}">
-      <block wx:for="{{list}}" wx:key="id">
-        <view class="item" bindtap="goToEdit" data-index="{{index}}">
-          <view class="name">{{item.name}}</view>
-          <view class="info">
-            <text>{{item.company}} ｜ {{item.position}}</text>
-          </view>
-          <view class="extra">
-            <text>{{item.graduation_year}}届 · {{item.education}}</text>
-          </view>
-          <view class="time">{{item.created_at | formatDate}}</view>
-        </view>
-      </block>
-    </block>
-
-    <!-- 空状态 -->
-    <view wx:if="{{list.length === 0 && !loading}}" class="empty">
-      <text>暂无推荐记录</text>
-    </view>
-
-    <!-- 加载中 -->
-    <view wx:if="{{loading}}" class="loading">加载中...</view>
-  </scroll-view>
+</scroll-view>
 </view>

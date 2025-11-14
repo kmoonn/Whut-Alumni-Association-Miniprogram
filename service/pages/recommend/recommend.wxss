@@ -1,0 +1,77 @@
+.container {
+  padding: 30rpx;
+  background: #fff;
+  min-height: 100vh;
+}
+
+.form-item {
+  margin-bottom: 18rpx;
+}
+
+.label {
+  font-size: 30rpx;
+  margin-bottom: 10rpx;
+  color: #333;
+}
+
+.submit-btn {
+  margin-top: 40rpx;
+}
+
+.top-bar {
+  display: flex;
+  padding: 15px 13px;
+  background: linear-gradient(to right, #0056b3, #007bff);
+  color: white;
+  font-size: 40rpx;
+  font-weight: bold;
+}
+
+.block {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  background: var(--td-bg-color-container);
+  border-radius: 16rpx;
+}
+
+.close-btn {
+  position: absolute;
+  left: 50%;
+  margin-left: -32rpx;
+  bottom: calc(-1 * (48rpx + 64rpx));
+}
+
+.popup-wrapper {
+  width: 600rpx;
+  padding: 40rpx 40rpx 30rpx;
+  background: #ffffff;
+  border-radius: 24rpx;
+  box-shadow: 0 12rpx 30rpx rgba(0, 0, 0, 0.12);
+  position: relative;
+  box-sizing: border-box;
+}
+
+.popup-header {
+  font-size: 36rpx;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+
+.popup-content {
+  font-size: 32rpx;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  line-height: 42rpx;
+  margin-bottom: 40rpx;
+}
+
+.highlight {
+  color: #0052d9;
+  font-weight: 600;
+}
+
+.popup-footer {
+  margin-top: 20rpx;
+}

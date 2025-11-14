@@ -61,6 +61,12 @@ Page({
         path: '/service/pages/ranks/ranks',
         key: 'ranks'
       },
+      {
+        name: '我的邀请',
+        icon: 'recommend.png',
+        path: '/service/pages/recommend/recommend',
+        key: 'recommend'
+      },
     ];
 
     const userInfo = wx.getStorageSync('userInfo');
@@ -69,9 +75,9 @@ Page({
     let userPermissions = [];
 
     if (userRole === 'admin' || userRole === 'leader') {
-      userPermissions = ['apply', 'apply_history', 'check', 'history', 'famous', 'search', 'map','ranks'];
+      userPermissions = ['apply', 'apply_history', 'check', 'history', 'famous', 'search', 'map','ranks', 'recommend'];
     } else {
-      userPermissions = ['apply', 'apply_history', 'check', 'history','ranks'];
+      userPermissions = ['apply', 'apply_history', 'check', 'history','ranks', 'recommend'];
     }
     // console.log(userPermissions)
 

@@ -32,7 +32,11 @@ Page({
       });
 
       const data = res.result?.data?.list || [];
-
+      data.forEach(item => {
+        if (item.created_at) {
+          item.created_at = formatDateTime(item.created_at);
+        }
+      });
 
       this.setData({
         list: refresh ? data : [...this.data.list, ...data],
@@ -40,7 +44,6 @@ Page({
         finished: data.length < this.data.pageSize,
       });
     } catch (err) {
-      console.error("加载历史记录失败:", err);
       wx.showToast({ title: '加载失败', icon: 'none' });
     } finally {
       this.setData({ loading: false, refreshing: false });
@@ -77,3 +80,7 @@ goToEdit(e) {
   }
 },
 });
+
+function formatDateTime(dateStr) {
+  return dateStr.slice(0, 16).replace('T', ' ');
+}
